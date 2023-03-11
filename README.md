@@ -1,6 +1,6 @@
-## Getting Started
+## Getting Starteth
 
-this is for testing
+this is for testing the thing
 
 ## Folder Structure
 
