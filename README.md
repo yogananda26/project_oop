@@ -1,6 +1,6 @@
 ## Getting Starteth
 
-this is for testing the thing
+this is for testing the thing hell yeah thing
 
 ## Folder Structure
 
