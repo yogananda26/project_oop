@@ -5,8 +5,9 @@ public class testing {
 // this is for changing thing 
     class test{
         test(){
-            System.out.println("this is for testing thing public");
+            System.out.println("this is for testing thing public"); 
         }
     }
+
 }
 
