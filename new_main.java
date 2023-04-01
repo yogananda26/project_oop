@@ -13,6 +13,4 @@ public class new_main{
             System.out.println(input);
         }
     }
-
-    
 }
