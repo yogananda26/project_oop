@@ -1,11 +1,12 @@
 package home_page;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 interface thing{
 
@@ -15,9 +16,10 @@ public class page_2 extends JFrame implements ActionListener {
     public static void main(String[] args) {
         
     }
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame("this is frame 2");
     JLabel label = new JLabel();
     JButton button = new JButton();
+    JPanel panel = new JPanel();
 
     // this for note
     /*
@@ -27,8 +29,9 @@ public class page_2 extends JFrame implements ActionListener {
      borderlayout
      */
     // this is for the action thing hell yeah
-    
+
     page_2(){ 
+        this.setLayout(new BorderLayout());
         this.setSize(400, 400);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         label.setText("this is frame 2");
