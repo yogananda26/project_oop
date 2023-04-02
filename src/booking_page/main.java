@@ -5,6 +5,9 @@ public class main{
         System.out.println("test");
         System.out.println("testing");
     }
-    testasdfsdf
-    asdfas
+    /**
+     * Innermain
+     */
+    public record Innermain() {
+    }
 }
