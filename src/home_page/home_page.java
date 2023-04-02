@@ -57,6 +57,7 @@ public class home_page extends JFrame implements ActionListener{
             new page_2();
             dispose();
         }
-
+    
+    
     }
 };
