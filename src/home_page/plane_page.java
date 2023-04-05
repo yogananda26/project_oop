@@ -141,7 +141,7 @@ public class plane_page extends JFrame implements ActionListener {
                         JLabel label_head = new JLabel("This Is Your Choose"); 
                         new_info.add(label_head); 
 
-
+                    
                         button_yes.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {

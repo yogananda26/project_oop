@@ -25,7 +25,7 @@ import javax.swing.border.Border;
 public class home_page extends JFrame implements ActionListener{
     // this is for Frame 
     public static void main(String[] args) {
-        new home_page(new database());
+        new home_page(new database()); 
     }
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
@@ -62,7 +62,6 @@ public class home_page extends JFrame implements ActionListener{
         list_of_image.add(image_train);
         list_of_image.add(image_top_up);
         list_of_image.add(image_plane);
-
 
         // this is for the button 
         for(String i : name_label){
@@ -109,8 +108,7 @@ public class home_page extends JFrame implements ActionListener{
 
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
-                new train_page();
-
+                new train_page(); 
                 //the coding
             }
             dispose(); 
