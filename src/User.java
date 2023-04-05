@@ -7,12 +7,12 @@ public class User {
     private String password;
     private String PIN;
     private String gender;
+    private String phone;
     private long balance;
 
     ArrayList <History> history = new ArrayList<>();
-    
 
-    public User(String fullName, String username, String email, String password, String PIN, String gender, long balance) {
+    public User(String fullName, String username, String email, String password, String PIN, String gender, String phone, long balance) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
@@ -20,8 +20,9 @@ public class User {
         this.PIN = PIN;
         this.gender = gender;
         this.balance = balance;
+        this.phone = phone;
     }
-    
+
     public String getFullName() {
         return fullName;
     }
@@ -49,14 +50,20 @@ public class User {
     public String getPIN() {
         return PIN;
     }
-    public void setPIN(String pIN) {
-        PIN = pIN;
+    public void setPIN(String PIN) {
+        this.PIN = PIN;
     }
     public String getGender() {
         return gender;
     }
     public void setGender(String gender) {
         this.gender = gender;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     public long getBalance() {
         return balance;

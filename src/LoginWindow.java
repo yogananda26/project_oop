@@ -1,24 +1,11 @@
-package Loginn;
-
-import Regis.RegisterWindow;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
-public class LoginWindow extends JFrame implements ActionListener{
-    public static void main(String[] args) {
-        new LoginWindow();
-    }
-
+public class LoginWindow extends JFrame implements ActionListener, MouseListener{
     JFrame login;
     JPanel titlePanel;
     JLabel titleLabel;
@@ -31,6 +18,7 @@ public class LoginWindow extends JFrame implements ActionListener{
     JButton loginBtn;
     JLabel haveAcc;
     JButton registerBtn;
+    
 
     public LoginWindow() {
         // container
@@ -77,6 +65,7 @@ public class LoginWindow extends JFrame implements ActionListener{
         loginBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         loginBtn.setBounds(215, 130, 120, 40);
         loginBtn.setFocusable(false);
+        loginBtn.addActionListener(this);
 
         haveAcc = new JLabel("Have an account?");
         haveAcc.setFont(new Font("Times New Roman", Font.PLAIN, 12));
@@ -102,12 +91,54 @@ public class LoginWindow extends JFrame implements ActionListener{
         login.add(compLayer);
         login.setVisible(true);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
+        String email = emailField.getText();
+        String password = new String(passwordField.getPassword());
+        
         if(e.getSource()==registerBtn){
             login.dispose();
-            new Regis.RegisterWindow();
+            new RegisterWindow();
         }
+
+        if (e.getSource()==loginBtn){
+            if (new Register().login(email, password)){
+                // homepagenya disini
+            } else {
+                JOptionPane errorLogin = new JOptionPane();
+                errorLogin.showMessageDialog(null, "Account Not Found\nRegister Yourself!", "Error Login", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
     }
 }
