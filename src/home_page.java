@@ -1,4 +1,4 @@
-package home_page;
+
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -21,11 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 
-
 public class home_page extends JFrame implements ActionListener{
     // this is for Frame 
     public static void main(String[] args) {
-        new home_page(new database()); 
+        new home_page(new Database()); 
     }
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
@@ -46,7 +45,7 @@ public class home_page extends JFrame implements ActionListener{
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
-    home_page(database data){ 
+    home_page(Database data){ 
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
@@ -111,7 +110,8 @@ public class home_page extends JFrame implements ActionListener{
                 new train_page(); 
                 //the coding
             }
-            dispose(); 
+            // dispose(); 
+            
             // ArrayList<ImageIcon> list
         }
     }

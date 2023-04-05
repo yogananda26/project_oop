@@ -1,5 +1,3 @@
-package home_page;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,7 +14,6 @@ import javax.swing.JTextArea;
 
 public class plane_page extends JFrame implements ActionListener {
 
-    
     JFrame frame = new JFrame("this is frame 2");
     JLabel label_head = new JLabel();
     JButton button = new JButton();
@@ -122,7 +119,7 @@ public class plane_page extends JFrame implements ActionListener {
     // this is for record the thing
     @Override
     public void actionPerformed(ActionEvent e) {
-        database data = new database();
+        Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
             if(btn.getText() == "Home"){
                 new home_page(data);

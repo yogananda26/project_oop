@@ -1,4 +1,4 @@
-package home_page;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 
 public class train_page extends JFrame implements ActionListener {
     JPanel panel = new JPanel();
-
   
     private String name_feature[] = {
         "Home", "Date", "Profile", "Balance"
@@ -41,7 +40,7 @@ public class train_page extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof JButton btn){
             if(btn.getText() == "Home"){
-                new home_page(new database()); 
+                new home_page(new Database()); 
             }
             dispose();
         }
