@@ -2,12 +2,15 @@ package home_page;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.Flow;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,35 +23,37 @@ import javax.swing.border.Border;
 
 
 public class home_page extends JFrame implements ActionListener{
-    // this is for Fram
+    // this is for Frame 
     public static void main(String[] args) {
-        new home_page();
+        new home_page(new database());
     }
-    private JFrame frame = new JFrame(); 
+    private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
     private JPanel panel = new JPanel();
     private JPanel panel1 = new JPanel();
     private JPanel panel2 = new JPanel(); 
+    private JPanel panel3 = new JPanel(); 
 
 
     private JButton button_plane; 
     private JButton button_train;
     private JButton top_up;
 
-    ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
+    private ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
 
 
     private String name_label[] = {
-        "jason", "input", "yang"
+        "Date", "Profile", "Balance"
     };
-    home_page(){ 
-        
+    home_page(database data){ 
+
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-        panel.setLayout(new GridLayout(10,1));
+        panel.setLayout(new GridLayout(3,1));
         panel2.setLayout(new FlowLayout(1,10, 10));
+        panel3.setLayout(new GridLayout(1,3));
 
         // this is for the image 
         ImageIcon image_plane = new ImageIcon("2668926-200.png");
@@ -74,32 +79,41 @@ public class home_page extends JFrame implements ActionListener{
             button_new_feature.setFocusable(false);
             button_new_feature.addActionListener(this);
             panel2.add(button_new_feature);
+            // panel3.add(button_new_feature);
         }
-    
-        label.setText("this is going to frame2");
+
+        panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panel3.setPreferredSize(new Dimension(100, 70));
+        label.setText("Travelly App");
+        label.setFont(new Font("Helvetica", Font.PLAIN, 50));
+        panel3.add(label);
+
+
         button.setSize(1920, 1080);
-        button.add(label);
-        button.addActionListener(this);
         this.add(panel2, BorderLayout.CENTER);
-        this.add(button, BorderLayout.NORTH);
+        // this.add(panel3,BorderLayout.EAST);
+        this.add(panel3, BorderLayout.NORTH);
         this.add(panel, BorderLayout.WEST); 
         this.setVisible(true);
     
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+    
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.getIcon() == list_of_image.get(0)){ 
                 new plane_page();
-                dispose();
             }
             else if(btn.getIcon() == list_of_image.get(1)){
-                //the coding
+
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
+                new train_page();
+
                 //the coding
             }
+            dispose(); 
             // ArrayList<ImageIcon> list
         }
     }
