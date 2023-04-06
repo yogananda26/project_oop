@@ -55,9 +55,9 @@ public class home_page extends JFrame implements ActionListener{
         panel3.setLayout(new GridLayout(1,3));
 
         // this is for the image 
-        ImageIcon image_plane = new ImageIcon("2668926-200.png");
-        ImageIcon image_top_up = new ImageIcon("images.jpg");
-        ImageIcon image_train = new ImageIcon("png-clipart-black-train-illustration-rail-transport-train-station-maglev-computer-icons-train-angle-public-transport.png");
+        ImageIcon image_plane = new ImageIcon(getClass().getResource("images.png"));
+        ImageIcon image_top_up = new ImageIcon(getClass().getResource("2464502-200.png"));
+        ImageIcon image_train = new ImageIcon(getClass().getResource("png-clipart-black-train-illustration-rail-transport-train-station-maglev-computer-icons-train-angle-public-transport.png"));
         list_of_image.add(image_train);
         list_of_image.add(image_top_up);
         list_of_image.add(image_plane);
@@ -103,6 +103,7 @@ public class home_page extends JFrame implements ActionListener{
             if(btn.getIcon() == list_of_image.get(0)){ 
                 new plane_page();
             }
+
             else if(btn.getIcon() == list_of_image.get(1)){
 
             }

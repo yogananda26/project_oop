@@ -4,8 +4,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,6 +44,13 @@ public class plane_page extends JFrame implements ActionListener {
         2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
         212000.0, 100000.0, 112100.0
     };
+    private ImageIcon image[] = {new ImageIcon(getClass().getResource("logo_lion_air.png")),
+    new ImageIcon(getClass().getResource("Sriwijaya_air.png")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
+    new ImageIcon(getClass().getResource("batik_air.png")), new ImageIcon(getClass().getResource("super_air_jet.png")),
+    new ImageIcon(getClass().getResource("air_asia_air.png")), new ImageIcon(getClass().getResource("singapore_airlane.png")),
+    new ImageIcon(getClass().getResource("qantas_air.png")), new ImageIcon(getClass().getResource("citilink_air.png"))};
+
+
     plane_page(){ 
     // this for note
     /*
@@ -49,25 +59,28 @@ public class plane_page extends JFrame implements ActionListener {
      gridlayout
      borderlayout
      */
-        panel_container.setLayout(new GridLayout(10,5));
+        panel_container.setLayout(new GridLayout(9,5));
         for(int i = 0; i<plane_name.length; i++){
 
             // JButton button2 = new JButton();
             JPanel panel = new JPanel();
             JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JLabel panel_logo_airplane = new JLabel(image[i]);
             JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT,50,1));
-            JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            JPanel panel_plane = new JPanel(new FlowLayout());
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
             JLabel label_price = new JLabel(); 
 
-
+    
             panel.setLayout(new FlowLayout(FlowLayout.LEADING));
             String text = plane_name[i];
             label.setText(text);
             label.setFont(new Font(getName(), ABORT, 20));
+            label.setPreferredSize(new Dimension(250, 25));
             panel_plane.setPreferredSize(new Dimension(250, 200));
             panel_plane.add(label);
+            panel_plane.add(panel_logo_airplane);
 
             String dest = destination[i] + "  ---->  " + destination[(destination.length-1)-i];
             label_destination.setText(dest);
