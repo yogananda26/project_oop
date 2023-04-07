@@ -84,18 +84,18 @@ public class TopUpWindow extends JFrame implements ActionListener{
         String amount = balanceField.getText();
         if (e.getSource()==balanceBtn){
             if (new Register().checkValidAmount(amount)){
-                JOptionPane showValidAmount = new JOptionPane();
-                String PIN = showValidAmount.showInputDialog(null, "Input Your PIN : ");
+                // JOptionPane showValidAmount = new JOptionPane();
+                String PIN = JOptionPane.showInputDialog(null, "Input Your PIN : ");
                 if (new Register().checkAddBalancePIN(PIN, amount)){
-                    JOptionPane showCorrectPin = new JOptionPane();
-                    showCorrectPin.showMessageDialog(null, "Added to your balance!");
+                    // JOptionPane showCorrectPin = new JOptionPane();
+                    JOptionPane.showMessageDialog(null, "Added to your balance!");
                 } else {
-                    JOptionPane errorPIN = new JOptionPane();
-                    errorPIN.showMessageDialog(null, "Wrong PIN!", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
+                    // JOptionPane errorPIN = new JOptionPane();
+                    JOptionPane.showMessageDialog(null, "Wrong PIN!", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane showError = new JOptionPane();
-                showError.showMessageDialog(null, "Please input correct amount", "Error Input", JOptionPane.ERROR_MESSAGE);
+                // JOptionPane showError = new JOptionPane();
+                JOptionPane.showMessageDialog(null, "Please input correct amount", "Error Input", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

@@ -3,7 +3,7 @@ import javax.xml.crypto.Data;
 public class Register {
 
     Database data = new Database();
-    int userSize = data.user.size();
+    int userSize = Database.user.size();
     private int idx = 0;
 
     public static void main(String[] args) {
@@ -42,8 +42,8 @@ public class Register {
     }
 
     boolean checkValidUsername(String username){
-        for (int i = 0; i < data.user.size(); i++){
-            if (username.equals(data.user.get(i).getUsername())){
+        for (int i = 0; i < userSize; i++){
+            if (username.equals(Database.user.get(i).getUsername())){
                 return false;
             }
         }
@@ -76,12 +76,12 @@ public class Register {
 
     public void addUser(String fullName, String email, String password, String username, String gender, String PIN, String phone){
         User users = new User(fullName, username, email, password, PIN, gender, phone, 0);
-        data.user.add(users);
+        Database.user.add(users);
     }
 
     boolean login(String email, String password){
         for (int i = 0; i < userSize; i++){
-            if (data.user.get(i).getEmail().equals(email) && data.user.get(i).getPassword().equals(password)){
+            if (Database.user.get(i).getEmail().equals(email) && Database.user.get(i).getPassword().equals(password)){
                 idx = i;
                 new HomePageWindow(data, idx);
                 return true;
@@ -100,7 +100,7 @@ public class Register {
     }
 
     boolean checkAddBalancePIN(String PIN, String amount){
-        if (data.user.get(idx).getPIN().equals(PIN)){
+        if (Database.user.get(idx).getPIN().equals(PIN)){
             Long addAmount = Long.parseLong(amount);
             addUserAmount(addAmount, idx);
             return true;
@@ -109,7 +109,7 @@ public class Register {
     }
 
     void addUserAmount(Long addAmount, int idx){
-        Long temp = data.user.get(idx).getBalance();
-        data.user.get(idx).setBalance(temp + addAmount);
+        Long temp = Database.user.get(idx).getBalance();
+        Database.user.get(idx).setBalance(temp + addAmount);
     }
 }
