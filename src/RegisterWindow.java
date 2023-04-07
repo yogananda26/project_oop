@@ -22,9 +22,10 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
 
     public RegisterWindow() {
         // container
+        Color bgColor = new Color(70, 188, 224);
         register = new JFrame("Travelly!!");
         register.setSize(600, 630);
-        register.getContentPane().setBackground(Color.WHITE);
+        register.getContentPane().setBackground(bgColor);
         register.setDefaultCloseOperation(EXIT_ON_CLOSE);
         register.setLayout(null);
         register.setResizable(false);
@@ -33,7 +34,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         // component
         titlePanel = new JPanel();
         titlePanel.setBounds(0, 0, 600, 75);
-        titlePanel.setBackground(Color.decode("#c9ffeb"));
+        titlePanel.setBackground(bgColor);
         titlePanel.setLayout(null);
 
         titleLabel = new JLabel();
@@ -115,12 +116,10 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         genderLabel.setFont(labelFont);
         genderLabel.setBounds(18, 278, 1000, 50);
 
-        submitBtn = new JButton();
-        ImageIcon submitIcon = new ImageIcon("src/registrasibutton.png");
-        submitBtn.setIcon(submitIcon);
-        submitBtn.setText("REGISTER");
-        submitBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        submitBtn.setBounds(210, 390, 150, 40);
+        ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.jpg"));
+        submitBtn = new JButton(submitIcon);
+        submitBtn.setBounds(190, 380, 180, 49);
+        submitBtn.setContentAreaFilled(false);
         submitBtn.setFocusable(false);
         submitBtn.addActionListener(this);
 
@@ -204,7 +203,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginBtn) {
             register.dispose();
-            // new LoginWindow();
+            new LoginWindow();
         } else if (e.getSource() == submitBtn) {
             String fullName = nameField.getText();
             String email = emailField.getText();
