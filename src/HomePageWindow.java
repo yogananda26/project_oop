@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -21,11 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 
-public class home_page extends JFrame implements ActionListener{
-    // this is for Frame 
-    // public static void main(String[] args) {
-    //     new home_page(new Database()); 
-    // }
+public class HomePageWindow extends JFrame implements ActionListener{
+    public static void main(String[] args) {
+        new HomePageWindow(new Database(),0); 
+    }
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
@@ -45,7 +43,7 @@ public class home_page extends JFrame implements ActionListener{
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
-    home_page(Database data, int idx){ 
+    HomePageWindow(Database data, int idx){ 
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
@@ -102,18 +100,17 @@ public class home_page extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.getIcon() == list_of_image.get(0)){ 
-                new train_page(); 
+                new TrainPageWindow(); 
             }
 
             else if(btn.getIcon() == list_of_image.get(1)){
-                dispose();
                 new TopUpWindow();
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
-                new plane_page();
+                new PlanePageWindow();
                 //the coding
             }
-            // dispose(); 
+            dispose(); 
             
             // ArrayList<ImageIcon> list
         }

@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class plane_page extends JFrame implements ActionListener {
+public class PlanePageWindow extends JFrame implements ActionListener {
 
     JFrame frame = new JFrame("this is frame 2");
     JLabel label_head = new JLabel();
@@ -54,7 +54,7 @@ public class plane_page extends JFrame implements ActionListener {
     };
 
 
-    plane_page(){ 
+    PlanePageWindow(){ 
     // this for note
     /*
      type of layout

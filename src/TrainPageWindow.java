@@ -13,13 +13,13 @@ import javax.swing.JPanel;
 
 
 
-public class train_page extends JFrame implements ActionListener {
+public class TrainPageWindow extends JFrame implements ActionListener {
     JPanel panel = new JPanel();
   
     private String name_feature[] = {
         "Home", "Date", "Profile", "Balance"
     };
-    train_page(){   
+    TrainPageWindow(){   
         panel.setLayout(new GridLayout(4 ,1));
         this.setLayout(new GridLayout());
         for(String i : name_feature){
@@ -40,7 +40,7 @@ public class train_page extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof JButton btn){
             if(btn.getText() == "Home"){
-                new home_page(new Database()); 
+                // new home_page(new Database()); 
             }
             dispose();
         }

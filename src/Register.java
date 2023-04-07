@@ -83,7 +83,7 @@ public class Register {
         for (int i = 0; i < userSize; i++){
             if (data.user.get(i).getEmail().equals(email) && data.user.get(i).getPassword().equals(password)){
                 idx = i;
-                new home_page(data, idx);
+                new HomePageWindow(data, idx);
                 return true;
             }
         }
