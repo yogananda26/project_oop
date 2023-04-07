@@ -85,6 +85,7 @@ public class home_page extends JFrame implements ActionListener{
         label.setText("Travelly App");
         label.setFont(new Font("Helvetica", Font.PLAIN, 50));
         panel3.add(label);
+        panel3.setBackground(new Color(79, 188, 224));
 
 
         button.setSize(1920, 1080);
@@ -101,14 +102,14 @@ public class home_page extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.getIcon() == list_of_image.get(0)){ 
-                new plane_page();
+                new train_page(); 
             }
 
             else if(btn.getIcon() == list_of_image.get(1)){
 
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
-                new train_page(); 
+                new plane_page();
                 //the coding
             }
             // dispose(); 

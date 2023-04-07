@@ -30,7 +30,8 @@ public class plane_page extends JFrame implements ActionListener {
         "Citilink"
     };
     private String destination[] = {
-        "Bandung","Jakarta","Surabaya", "Makassar", "Semarang","Yogyakarta","Madura","Jambi", "Papua"
+        "Bandung","Jakarta","Surabaya", "Makassar", "Semarang","Yogyakarta","Madura","Jambi", "Papua","Medan",
+        "Manado", "Maluku"
     }; 
     private String navigation[] = {
         "Home", "Date", "Profile", "Balance"
@@ -44,11 +45,13 @@ public class plane_page extends JFrame implements ActionListener {
         2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
         212000.0, 100000.0, 112100.0
     };
-    private ImageIcon image[] = {new ImageIcon(getClass().getResource("logo_lion_air.png")),
-    new ImageIcon(getClass().getResource("Sriwijaya_air.png")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
-    new ImageIcon(getClass().getResource("batik_air.png")), new ImageIcon(getClass().getResource("super_air_jet.png")),
-    new ImageIcon(getClass().getResource("air_asia_air.png")), new ImageIcon(getClass().getResource("singapore_airlane.png")),
-    new ImageIcon(getClass().getResource("qantas_air.png")), new ImageIcon(getClass().getResource("citilink_air.png"))};
+    private ImageIcon image[] = {
+        new ImageIcon(getClass().getResource("logo_lion_air.png")),
+        new ImageIcon(getClass().getResource("Sriwijaya_air.png")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
+        new ImageIcon(getClass().getResource("batik_air.png")), new ImageIcon(getClass().getResource("super_air_jet.png")),
+        new ImageIcon(getClass().getResource("air_asia_air.png")), new ImageIcon(getClass().getResource("singapore_airlane.png")),
+        new ImageIcon(getClass().getResource("qantas_air.png")), new ImageIcon(getClass().getResource("citilink_air.png"))
+    };
 
 
     plane_page(){ 
@@ -63,17 +66,15 @@ public class plane_page extends JFrame implements ActionListener {
         for(int i = 0; i<plane_name.length; i++){
 
             // JButton button2 = new JButton();
-            JPanel panel = new JPanel();
+            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel panel_logo_airplane = new JLabel(image[i]);
             JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT,50,1));
-            JPanel panel_plane = new JPanel(new FlowLayout());
+            JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
             JLabel label_price = new JLabel(); 
 
-    
-            panel.setLayout(new FlowLayout(FlowLayout.LEADING));
             String text = plane_name[i];
             label.setText(text);
             label.setFont(new Font(getName(), ABORT, 20));
@@ -82,7 +83,7 @@ public class plane_page extends JFrame implements ActionListener {
             panel_plane.add(label);
             panel_plane.add(panel_logo_airplane);
 
-            String dest = destination[i] + "  ---->  " + destination[(destination.length-1)-i];
+            String dest = destination[i] + "  ---->  " + destination[(destination.length-1 - i)/(i+1)];
             label_destination.setText(dest);
             label_destination.setFont(new Font(getName(), ABORT, 20));
             panel_destination.setPreferredSize(new Dimension(500, 200));
@@ -107,6 +108,7 @@ public class plane_page extends JFrame implements ActionListener {
 
         }
         panel2.setLayout(new GridLayout(4, 1));
+
         for(String i : navigation){
             JButton button1 = new JButton(); 
             button1.setText(i);
@@ -119,6 +121,7 @@ public class plane_page extends JFrame implements ActionListener {
         label_head.setText("Travelly App");
         label_head.setFont(new Font("Helvetica", Font.PLAIN, 50));
         panel_head.add(label_head);
+        panel_head.setBackground(new Color(79, 188, 224));
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -147,19 +150,19 @@ public class plane_page extends JFrame implements ActionListener {
                         panel.setLayout(new FlowLayout());
                         frame.setLayout(new BorderLayout());
                         JButton button_yes = new JButton("Buy");
+                        JButton button_no = new JButton("Cancel");
                         JPanel new_info = new JPanel(new FlowLayout(FlowLayout.CENTER));
                         JLabel label_head = new JLabel("This Is Your Choose"); 
                         new_info.add(label_head); 
-
                     
                         button_yes.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 // this is for exit the program
                                 frame.setVisible(false);
+                                
                             } 
                         });
-                        JButton button_no = new JButton("Cancel");
                         button_no.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
@@ -168,14 +171,13 @@ public class plane_page extends JFrame implements ActionListener {
                             }
                         });
 
-
                         // this is for the info
                         JTextArea text_ticket = new JTextArea(
                             "============================\n\n" + 
                             "Plane      : " + plane_name[i] + "\n" + 
                             "Price      : Rp" + price[i] + ";\n" +
                             "Departure : " + destination[i] + "\n" +
-                            "Arrival    : " + destination[destination.length - 1 - i] + "\n\n" +
+                            "Arrival    : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
                             "============================"
                         );
                         text_ticket.setOpaque(false);

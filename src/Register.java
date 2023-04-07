@@ -2,9 +2,14 @@ import javax.xml.crypto.Data;
 
 public class Register {
 
+<<<<<<< Updated upstream
     static Database data = new Database();
     private int userSize = data.user.size();
     private int idx = 0;
+=======
+    Database data = new Database();
+
+>>>>>>> Stashed changes
     public static void main(String[] args) {
         new RegisterWindow();
     }
