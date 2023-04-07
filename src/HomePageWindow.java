@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.xml.crypto.Data;
 
 
 public class HomePageWindow extends JFrame implements ActionListener{
@@ -38,13 +39,16 @@ public class HomePageWindow extends JFrame implements ActionListener{
     private JButton top_up;
 
     private ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
+    private Database datum;
+    private int index; 
 
 
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
     HomePageWindow(Database data, int idx){ 
-
+        datum = data;
+        index = idx;
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -100,11 +104,11 @@ public class HomePageWindow extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.getIcon() == list_of_image.get(0)){ 
-                new TrainPageWindow(); 
+                new train_page(); 
             }
 
             else if(btn.getIcon() == list_of_image.get(1)){
-                new TopUpWindow();
+                new TopUpWindow(datum, index);
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
                 new PlanePageWindow();

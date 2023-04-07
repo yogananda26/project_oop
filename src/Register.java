@@ -90,6 +90,7 @@ public class Register {
         return false;
     }
 
+
     boolean checkValidAmount(String amount){
         for (char c: amount.toCharArray()){
             if (Character.isAlphabetic(c)){
@@ -99,13 +100,16 @@ public class Register {
         return true;
     }
 
-    boolean checkAddBalancePIN(String PIN, String amount){
+    boolean checkAddBalancePIN(String PIN, String amount, int idx){
         if (Database.user.get(idx).getPIN().equals(PIN)){
             Long addAmount = Long.parseLong(amount);
             addUserAmount(addAmount, idx);
             return true;
         }
         return false;
+    }
+    int getUseridx(){
+        return idx;
     }
 
     void addUserAmount(Long addAmount, int idx){

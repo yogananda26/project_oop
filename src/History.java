@@ -23,6 +23,7 @@ public class History {
     void set_date(String date){
         this.date = date; 
     }
+    
 
     // getter
     
