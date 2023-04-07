@@ -23,9 +23,9 @@ import javax.swing.border.Border;
 
 public class home_page extends JFrame implements ActionListener{
     // this is for Frame 
-    public static void main(String[] args) {
-        new home_page(new Database()); 
-    }
+    // public static void main(String[] args) {
+    //     new home_page(new Database()); 
+    // }
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
@@ -45,7 +45,7 @@ public class home_page extends JFrame implements ActionListener{
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
-    home_page(Database data){ 
+    home_page(Database data, int idx){ 
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
@@ -106,7 +106,8 @@ public class home_page extends JFrame implements ActionListener{
             }
 
             else if(btn.getIcon() == list_of_image.get(1)){
-
+                dispose();
+                new TopUpWindow();
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
                 new plane_page();

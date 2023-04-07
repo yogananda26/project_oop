@@ -2,14 +2,10 @@ import javax.xml.crypto.Data;
 
 public class Register {
 
-<<<<<<< Updated upstream
-    static Database data = new Database();
-    private int userSize = data.user.size();
-    private int idx = 0;
-=======
     Database data = new Database();
+    int userSize = data.user.size();
+    private int idx = 0;
 
->>>>>>> Stashed changes
     public static void main(String[] args) {
         new RegisterWindow();
     }
@@ -87,6 +83,7 @@ public class Register {
         for (int i = 0; i < userSize; i++){
             if (data.user.get(i).getEmail().equals(email) && data.user.get(i).getPassword().equals(password)){
                 idx = i;
+                new home_page(data, idx);
                 return true;
             }
         }

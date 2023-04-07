@@ -138,7 +138,7 @@ public class plane_page extends JFrame implements ActionListener {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
             if(btn.getText() == "Home"){
-                new home_page(data);
+                // new home_page(data);
                 dispose(); 
             }
             else{
