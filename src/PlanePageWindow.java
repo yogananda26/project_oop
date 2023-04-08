@@ -48,13 +48,12 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         212000.0, 100000.0, 112100.0
     };
     private ImageIcon image[] = {
-        new ImageIcon(getClass().getResource("logo_lion_air.png")),
-        new ImageIcon(getClass().getResource("Sriwijaya_air.png")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
-        new ImageIcon(getClass().getResource("batik_air.png")), new ImageIcon(getClass().getResource("super_air_jet.png")),
+        new ImageIcon(getClass().getResource("logo_lion_air.jpg")),
+        new ImageIcon(getClass().getResource("Sriwijaya_air.jpg")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
+        new ImageIcon(getClass().getResource("batik_air.jpg")), new ImageIcon(getClass().getResource("super_air_jet.png")),
         new ImageIcon(getClass().getResource("air_asia_air.png")), new ImageIcon(getClass().getResource("singapore_airlane.png")),
         new ImageIcon(getClass().getResource("qantas_air.png")), new ImageIcon(getClass().getResource("citilink_air.png"))
     };
-
 
     PlanePageWindow(){ 
     // this for note

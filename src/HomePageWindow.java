@@ -55,13 +55,13 @@ public class HomePageWindow extends JFrame implements ActionListener{
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(4,1));
-        panel2.setLayout(new FlowLayout(1,10, 10));
+        panel2.setLayout(new FlowLayout());
         panel3.setLayout(new GridLayout(1,3));
 
         // this is for the image 
-        ImageIcon image_plane = new ImageIcon(getClass().getResource("images.png"));
-        ImageIcon image_top_up = new ImageIcon(getClass().getResource("2464502-200.png"));
-        ImageIcon image_train = new ImageIcon(getClass().getResource("png-clipart-black-train-illustration-rail-transport-train-station-maglev-computer-icons-train-angle-public-transport.png"));
+        ImageIcon image_plane = new ImageIcon(getClass().getResource("top_up.png"));
+        ImageIcon image_top_up = new ImageIcon(getClass().getResource("plane.jpg"));
+        ImageIcon image_train = new ImageIcon(getClass().getResource("train.jpg"));
         list_of_image.add(image_train);
         list_of_image.add(image_top_up);
         list_of_image.add(image_plane);
