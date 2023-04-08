@@ -55,7 +55,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(4,1));
-        panel2.setLayout(new FlowLayout());
+        panel2.setLayout(new FlowLayout(1, 10, 10));
         panel3.setLayout(new GridLayout(1,3));
 
         // this is for the image 
@@ -78,6 +78,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
 
         for(ImageIcon j : list_of_image){
             JButton button_new_feature = new JButton(j);
+            button_new_feature.setPreferredSize(new Dimension(400,500));;
             button_new_feature.setBackground(Color.WHITE);
             button_new_feature.setFocusable(false);
             button_new_feature.addActionListener(this);
