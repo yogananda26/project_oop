@@ -44,7 +44,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
 
 
     private String name_label[] = {
-        "Date", "Profile", "Balance"
+        "Date", "Profile", "Balance","Log out"
     };
     HomePageWindow(Database data, int idx){ 
         datum = data;
@@ -103,17 +103,17 @@ public class HomePageWindow extends JFrame implements ActionListener{
     
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
-            if(btn.getIcon() == list_of_image.get(0)){ 
-                new train_page(); 
-            }
+            // if(btn.getIcon() == list_of_image.get(0)){ 
+            //     new train_page(); 
+            // }
 
-            else if(btn.getIcon() == list_of_image.get(1)){
-                new TopUpWindow(datum, index);
-            }
-            else if(btn.getIcon() == list_of_image.get(2)){ 
-                new PlanePageWindow();
-                //the coding
-            }
+            // else if(btn.getIcon() == list_of_image.get(1)){
+            //     new TopUpWindow(datum, index);
+            // }
+            // else if(btn.getIcon() == list_of_image.get(2)){ 
+            //     new PlanePageWindow();
+            //     //the coding
+            // }
             dispose(); 
             
             // ArrayList<ImageIcon> list
