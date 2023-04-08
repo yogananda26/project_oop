@@ -40,7 +40,7 @@ public class train_page extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof JButton btn){
             if(btn.getText() == "Home"){
-                new home_page(new Database()); 
+                // new home_page(new Database()); 
             }
             dispose();
         }

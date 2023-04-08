@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -19,13 +18,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.xml.crypto.Data;
 
-public class home_page extends JFrame implements ActionListener{
-    // this is for Frame 
-    // public static void main(String[] args) {
-    //     new home_page(new Database()); 
-    // }
 
+public class HomePageWindow extends JFrame implements ActionListener{
+    public static void main(String[] args) {
+        new HomePageWindow(new Database(),0); 
+    }
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
@@ -40,6 +39,8 @@ public class home_page extends JFrame implements ActionListener{
     private JButton top_up;
 
     private ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
+    private Database datum;
+    private int index; 
 
     int idx = new Register().getIdx();
     Database temp = new Register().getData();
@@ -47,10 +48,9 @@ public class home_page extends JFrame implements ActionListener{
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
-
-
-    home_page(Database data, int idx){ 
-
+    HomePageWindow(Database data, int idx){ 
+        datum = data;
+        index = idx;
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -110,14 +110,13 @@ public class home_page extends JFrame implements ActionListener{
             }
 
             else if(btn.getIcon() == list_of_image.get(1)){
-                dispose();
-                new TopUpWindow(temp, idx);
+                new TopUpWindow(datum, index);
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
-                new plane_page();
+                new PlanePageWindow();
                 //the coding
             }
-            // dispose(); 
+            dispose(); 
             
             // ArrayList<ImageIcon> list
         }

@@ -104,11 +104,11 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
 
         if (e.getSource()==loginBtn){
             if (new Register().login(email, password)){
-                
+                return;
             } else {
-                JOptionPane errorLogin = new JOptionPane();
-                errorLogin.showMessageDialog(null, "Account Not Found\nRegister Yourself!", "Error Login", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Account Not Found\nRegister Yourself!", "Error Login", JOptionPane.ERROR_MESSAGE);
             }
+            dispose();
         }
     }
 

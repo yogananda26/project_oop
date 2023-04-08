@@ -225,80 +225,64 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
             if (fullName != null && email != null && password != null && username != null && gender != null
                     && PIN != null) {
                 if (!new Register().checkValidFullName(fullName)) {
-                    JOptionPane errorFullName = new JOptionPane();
-                    errorFullName.showMessageDialog(null, "Please input correct Full Name!", "Full Name",
+                    JOptionPane.showMessageDialog(null, "Please input correct Full Name!", "Full Name",
                             JOptionPane.ERROR_MESSAGE);
-                            errorFullName.setFocusable(false);
                     fullName = null;
                     name = false;
                 } else {
                     name = true;
                 }
                 if (!new Register().checkValidEmail(email)) {
-                    JOptionPane errorEmail = new JOptionPane();
-                    errorEmail.showMessageDialog(null, "Please input correct email!", "Email",
+                    JOptionPane.showMessageDialog(null, "Please input correct email!", "Email",
                             JOptionPane.ERROR_MESSAGE);
-                            errorEmail.setFocusable(false);
                     email = null;
                     ema = false;
                 } else {
                     ema = true;
                 }
                 if (!new Register().checkValidPassword(password)) {
-                    JOptionPane errorPassword = new JOptionPane();
-                    errorPassword.showMessageDialog(null, "Please input correct Password!", "Password",
+                    JOptionPane.showMessageDialog(null, "Please input correct Password!", "Password",
                             JOptionPane.ERROR_MESSAGE);
-                            errorPassword.setFocusable(false);
                     password = null;
                     pass = false;
                 } else {
                     pass = true;
                 }
                 if (!new Register().checkValidConfirm(password, confirm)) {
-                    JOptionPane errorConfirm = new JOptionPane();
-                    errorConfirm.showMessageDialog(null, "Make sure your Confirm Password is same", "Confirm",
+                    JOptionPane.showMessageDialog(null, "Make sure your Confirm Password is same", "Confirm",
                             JOptionPane.ERROR_MESSAGE);
-                            errorConfirm.setFocusable(false);
                     confirm = null;
                     conf = false;
                 } else {
                     conf = true;
                 }
                 if (!new Register().checkValidPhone(phone)){
-                    JOptionPane errorPhone = new JOptionPane();
-                    errorPhone.showMessageDialog(null, "Phone Number is must 11-13 digits and digit only!", "Phone",
+                    JOptionPane.showMessageDialog(null, "Phone Number is must 11-13 digits and digit only!", "Phone",
                             JOptionPane.ERROR_MESSAGE);
-                            errorPhone.setFocusable(false);
                     phone = null;
                     pho = false;
                 } else {
                     pho = true;
                 }
                 if (!new Register().checkValidUsername(username)) {
-                    JOptionPane errorUsername = new JOptionPane();
-                    errorUsername.showMessageDialog(null, "Username is already taken!", "Username",
+                    JOptionPane.showMessageDialog(null, "Username is already taken!", "Username",
                             JOptionPane.ERROR_MESSAGE);
-                            errorUsername.setFocusable(false);
                     username = null;
                     user = false;
                 } else {
                     user = true;
                 }
                 if (gender == null) {
-                    JOptionPane errorGender = new JOptionPane();
-                    errorGender.showMessageDialog(null, "Please choose your gender!", "Gender",
+                    JOptionPane.showMessageDialog(null, "Please choose your gender!", "Gender",
                             JOptionPane.ERROR_MESSAGE);
-                            errorGender.setFocusable(false);
                     gender = null;
                     gen = false;
                 } else {
                     gen = true;
                 }
                 if (!new Register().checkValidPIN(PIN)) {
-                    JOptionPane errorPIN = new JOptionPane();
-                    errorPIN.showMessageDialog(null, "PIN must 6 digits [digits only]", "PIN",
+                    JOptionPane.showMessageDialog(null, "PIN must 6 digits [digits only]", "PIN",
                             JOptionPane.ERROR_MESSAGE);
-                            errorPIN.setFocusable(false);
                     PIN = null;
                     pin = false;
                 } else {
@@ -314,9 +298,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
                     emailField.setText(null);
                     usernameField.setText(null);
                     SwingUtilities.updateComponentTreeUI(register);
-                    JOptionPane successReg = new JOptionPane();
-                    successReg.setFocusable(false);
-                    int choose = successReg.showConfirmDialog(null, "Successfully Registered!\nGo to login page!");
+                    int choose = JOptionPane.showConfirmDialog(null, "Successfully Registered!\nGo to login page!");
                     if (choose == 0) {
                         register.dispose();
                         new LoginWindow();
@@ -324,10 +306,8 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
                 }
 
             } else {
-                JOptionPane errorMsg = new JOptionPane();
-                errorMsg.showMessageDialog(null, "Please fill the blank field!", "Register Warning",
+                JOptionPane.showMessageDialog(null, "Please fill the blank field!", "Register Warning",
                         JOptionPane.ERROR_MESSAGE);
-                        errorMsg.setFocusable(false);
             }
         }
     }

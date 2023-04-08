@@ -18,6 +18,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
     JLabel headerLabel;
     JPanel titPanel;
     JPanel contentPanel;
+    JPanel panel2 = new JPanel(new GridLayout(4,1)); 
 
     JPanel balancePanel;
     JTextField balanceField;
@@ -25,12 +26,15 @@ public class TopUpWindow extends JFrame implements ActionListener{
     JLabel textLabel;
     JButton balanceBtn;
     JPanel buttonPanel;
+    Database datum; 
+    int index;
 
-    // public static void main(String[] args) {
-    //     new TopUpWindow();
-    // }
-
+    private String navigation[] = {
+        "Home", "Date", "Profile", "Balance"
+    };
     public TopUpWindow(Database data, int idx) {
+        datum = data;
+        index = idx;
         Color bgColor = new Color(70, 188, 224);
         frame = new JFrame("Travelly");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -56,7 +60,10 @@ public class TopUpWindow extends JFrame implements ActionListener{
         contentPanel = new JPanel(new BorderLayout());
         balanceLabel = new JLabel("Here's your current balance : Rp." + data.user.get(idx).getBalance());
         balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-        contentPanel.add(balanceLabel, BorderLayout.NORTH);
+        // this is panel for label 
+        JPanel balanceJPanel = new JPanel(new FlowLayout()); 
+        balanceJPanel.add(balanceLabel); 
+        contentPanel.add(balanceJPanel,BorderLayout.NORTH);
 
         balancePanel = new JPanel(new FlowLayout());
         balancePanel.setBorder(BorderFactory.createEmptyBorder(150, 150, 150, 150));
@@ -74,28 +81,45 @@ public class TopUpWindow extends JFrame implements ActionListener{
         contentPanel.add(balancePanel, BorderLayout.CENTER);
         headerPanel.add(contentPanel, BorderLayout.CENTER);
 
+        for(String i : navigation){
+            JButton button1 = new JButton(); 
+            button1.setText(i);
+            button1.setBackground(Color.WHITE);
+            button1.setFocusable(false);
+            button1.addActionListener(this);
+            panel2.add(button1); 
+        }
+
         frame.add(headerPanel, BorderLayout.CENTER);
+        frame.add(panel2, BorderLayout.WEST); 
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.setVisible(true);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String amount = balanceField.getText();
-        if (e.getSource()==balanceBtn){
-            if (new Register().checkValidAmount(amount)){
-                JOptionPane showValidAmount = new JOptionPane();
-                String PIN = showValidAmount.showInputDialog(null, "Input Your PIN : ");
-                if (new Register().checkAddBalancePIN(PIN, amount)){
-                    JOptionPane showCorrectPin = new JOptionPane();
-                    showCorrectPin.showMessageDialog(null, "Added to your balance!");
+        if(e.getSource() instanceof JButton btn){
+            if (btn==balanceBtn){
+                if (new Register().checkValidAmount(amount)){
+                    String PIN = JOptionPane.showInputDialog(null, "Input Your PIN : ");
+                    if (new Register().checkAddBalancePIN(PIN, amount, index)){
+                        JOptionPane.showMessageDialog(null, "Added to your balance!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Wrong PIN!", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane errorPIN = new JOptionPane();
-                    errorPIN.showMessageDialog(null, "Wrong PIN!", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please input correct amount", "Error Input", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane showError = new JOptionPane();
-                showError.showMessageDialog(null, "Please input correct amount", "Error Input", JOptionPane.ERROR_MESSAGE);
+            }else{ 
+                if(btn.getText() == navigation[0]){
+                    new HomePageWindow(new Database(), new Register().getUseridx());
+                    dispose(); 
+                }
+                else if(btn.getText() == navigation[3]){
+                    new TopUpWindow(new Database(), new Register().getUseridx()); 
+                }
             }
         }
     }
