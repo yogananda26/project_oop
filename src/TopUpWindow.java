@@ -58,7 +58,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         headerPanel.add(titPanel, BorderLayout.NORTH);
 
         contentPanel = new JPanel(new BorderLayout());
-        balanceLabel = new JLabel("Here's your current balance : Rp." + data.user.get(idx).getBalance());
+        balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(idx).getBalance());
         balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         // this is panel for label 
         JPanel balanceJPanel = new JPanel(new FlowLayout()); 
