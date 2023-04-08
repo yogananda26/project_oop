@@ -52,7 +52,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-        panel.setLayout(new GridLayout(3,1));
+        panel.setLayout(new GridLayout(4,1));
         panel2.setLayout(new FlowLayout(1,10, 10));
         panel3.setLayout(new GridLayout(1,3));
 
@@ -70,6 +70,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
             button_new.setText(i);
             button_new.setBackground(Color.WHITE);
             button_new.setFocusable(false);
+            button_new.addActionListener(this);
             panel.add(button_new);
         }
 
@@ -103,19 +104,24 @@ public class HomePageWindow extends JFrame implements ActionListener{
     
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
-            // if(btn.getIcon() == list_of_image.get(0)){ 
-            //     new train_page(); 
-            // }
-
-            // else if(btn.getIcon() == list_of_image.get(1)){
-            //     new TopUpWindow(datum, index);
-            // }
-            // else if(btn.getIcon() == list_of_image.get(2)){ 
-            //     new PlanePageWindow();
-            //     //the coding
-            // }
-            dispose(); 
-            
+            if(btn.getIcon() == list_of_image.get(0)){ 
+                new TrainPageWindow(); 
+            }
+            else if(btn.getIcon() == list_of_image.get(1)){
+                new TopUpWindow(datum, index);
+            }
+            else if(btn.getIcon() == list_of_image.get(2)){ 
+                new PlanePageWindow();
+                //the coding
+            }
+            else{ 
+                String get_text = btn.getText(); 
+                if(get_text.equals(name_label[0]));
+                else if(get_text.equals(name_label[1]));
+                else if(get_text.equals(name_label[2]));
+                else if(get_text.equals(name_label[3]))new LoginWindow();
+            }
+            dispose();
             // ArrayList<ImageIcon> list
         }
     }
