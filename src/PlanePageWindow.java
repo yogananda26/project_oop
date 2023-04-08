@@ -18,7 +18,9 @@ import javax.swing.JTextArea;
 
 public class PlanePageWindow extends JFrame implements ActionListener {
 
-
+    public static void main(String[] args) {
+        new PlanePageWindow(); 
+    }
     JFrame frame = new JFrame("this is frame 2");
     JLabel label_head = new JLabel();
     JButton button = new JButton();
@@ -46,13 +48,13 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     private Double price[] = { 
         2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
         212000.0, 100000.0, 112100.0
-    };
+    };  
     private ImageIcon image[] = {
-        new ImageIcon(getClass().getResource("logo_lion_air.jpg")),
-        new ImageIcon(getClass().getResource("Sriwijaya_air.jpg")), new ImageIcon(getClass().getResource("garuda_indonesia.png")),
-        new ImageIcon(getClass().getResource("batik_air.jpg")), new ImageIcon(getClass().getResource("super_air_jet.png")),
-        new ImageIcon(getClass().getResource("air_asia_air.png")), new ImageIcon(getClass().getResource("singapore_airlane.png")),
-        new ImageIcon(getClass().getResource("qantas_air.png")), new ImageIcon(getClass().getResource("citilink_air.png"))
+        new ImageIcon(getClass().getResource("logo_lion_air (1).jpg")),
+        new ImageIcon(getClass().getResource("Sriwijaya_air (1).png")), new ImageIcon(getClass().getResource("garuda_indonesia (1).png")),
+        new ImageIcon(getClass().getResource("batik_air (1).png")), new ImageIcon(getClass().getResource("super_air_jet (1).png")),
+        new ImageIcon(getClass().getResource("air_asia_air (1).png")), new ImageIcon(getClass().getResource("singapore_airline (1).png")),
+        new ImageIcon(getClass().getResource("qantas_air (1).png")), new ImageIcon(getClass().getResource("citilink_air (1).png"))
     };
 
     PlanePageWindow(){ 
@@ -70,7 +72,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel panel_logo_airplane = new JLabel(image[i]);
-            JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT,50,1));
+            JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 5));
             JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
@@ -87,9 +89,12 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             String dest = destination[i] + "  ---->  " + destination[(destination.length-1 - i)/(i+1)];
             label_destination.setText(dest);
             label_destination.setFont(new Font(getName(), ABORT, 20));
+            label_destination.setHorizontalAlignment(JLabel.CENTER);
+            // label_destination.setPreferredSize(new Dimension(200, 200));
             panel_destination.setPreferredSize(new Dimension(500, 200));
+    
             
-            panel_destination.add(label_destination); 
+            panel_destination.add(label_destination);
             panel.add(panel_plane);
             panel.add(panel_destination);
 
@@ -102,7 +107,6 @@ public class PlanePageWindow extends JFrame implements ActionListener {
 
             label_price.setText("Rp"+price[i].toString());
             label_price.setFont(new Font(getName(), ABORT, 20));
-
             panel_button_more.add(label_price);
             panel_button_more.add(button_more); 
             panel_container.add(panel_button_more);
