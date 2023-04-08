@@ -20,12 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-
 public class home_page extends JFrame implements ActionListener{
     // this is for Frame 
     // public static void main(String[] args) {
     //     new home_page(new Database()); 
     // }
+
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
@@ -41,10 +41,14 @@ public class home_page extends JFrame implements ActionListener{
 
     private ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
 
+    int idx = new Register().getIdx();
+    Database temp = new Register().getData();
 
     private String name_label[] = {
         "Date", "Profile", "Balance"
     };
+
+
     home_page(Database data, int idx){ 
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -107,7 +111,7 @@ public class home_page extends JFrame implements ActionListener{
 
             else if(btn.getIcon() == list_of_image.get(1)){
                 dispose();
-                new TopUpWindow();
+                new TopUpWindow(temp, idx);
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
                 new plane_page();

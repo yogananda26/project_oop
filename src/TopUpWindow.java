@@ -26,11 +26,11 @@ public class TopUpWindow extends JFrame implements ActionListener{
     JButton balanceBtn;
     JPanel buttonPanel;
 
-    public static void main(String[] args) {
-        new TopUpWindow();
-    }
+    // public static void main(String[] args) {
+    //     new TopUpWindow();
+    // }
 
-    public TopUpWindow() {
+    public TopUpWindow(Database data, int idx) {
         Color bgColor = new Color(70, 188, 224);
         frame = new JFrame("Travelly");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -54,7 +54,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         headerPanel.add(titPanel, BorderLayout.NORTH);
 
         contentPanel = new JPanel(new BorderLayout());
-        balanceLabel = new JLabel("Here's your current balance : Rp.150.000");
+        balanceLabel = new JLabel("Here's your current balance : Rp." + data.user.get(idx).getBalance());
         balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         contentPanel.add(balanceLabel, BorderLayout.NORTH);
 

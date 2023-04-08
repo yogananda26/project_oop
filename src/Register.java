@@ -112,4 +112,12 @@ public class Register {
         Long temp = data.user.get(idx).getBalance();
         data.user.get(idx).setBalance(temp + addAmount);
     }
+
+    int getIdx(){
+        return idx;
+    }
+
+    public Database getData() {
+        return data;
+    }
 }
