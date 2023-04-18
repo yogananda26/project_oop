@@ -116,8 +116,8 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         genderLabel.setFont(labelFont);
         genderLabel.setBounds(18, 278, 1000, 50);
 
-        ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.jpg"));
-        submitBtn = new JButton(submitIcon);
+        // ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.jpg"));
+        submitBtn = new JButton();
         submitBtn.setBounds(190, 380, 180, 49);
         submitBtn.setContentAreaFilled(false);
         submitBtn.setFocusable(false);
