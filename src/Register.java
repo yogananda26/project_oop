@@ -1,8 +1,8 @@
-
+import javax.xml.crypto.Data;
 
 public class Register {
 
-    Database data = new Database();
+
     int userSize = Database.user.size();
     private int idx = 0;
 
@@ -61,6 +61,12 @@ public class Register {
         }
         return true;
     }
+    boolean checkValidPinEnter(String PIN , int index){
+        if(Database.user.get(index).getPIN() == PIN){
+            return true;
+        }
+        return false; 
+    }
 
     boolean checkValidPhone(String phone){
         for (char c: phone.toCharArray()){
@@ -79,15 +85,13 @@ public class Register {
         Database.user.add(users);
     }
 
-    boolean login(String email, String password){
+    int login(String email, String password){
         for (int i = 0; i < userSize; i++){
             if (Database.user.get(i).getEmail().equals(email) && Database.user.get(i).getPassword().equals(password)){
-                idx = i;
-                new HomePageWindow(data, idx);
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
 
@@ -117,11 +121,7 @@ public class Register {
         Database.user.get(idx).setBalance(temp + addAmount);
     }
 
-    int getIdx(){
-        return idx;
-    }
-
-    public Database getData() {
-        return data;
-    }
+    // int getIdx(){
+    //     return idx;
+    // }
 }

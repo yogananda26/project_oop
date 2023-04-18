@@ -42,8 +42,8 @@ public class HomePageWindow extends JFrame implements ActionListener{
     private Database datum;
     private int index; 
 
-    int idx = new Register().getIdx();
-    Database temp = new Register().getData();
+    // int idx = new Register().getUseridx();
+    // Database temp = new Register().getData();
 
     private String name_label[] = {
         "Date", "Profile", "Balance","Log out"
@@ -58,10 +58,10 @@ public class HomePageWindow extends JFrame implements ActionListener{
         panel2.setLayout(new FlowLayout(1, 10, 10));
         panel3.setLayout(new GridLayout(1,3));
 
-        // this is for the image 
-        ImageIcon image_plane = new ImageIcon(getClass().getResource("top_up.png"));
-        ImageIcon image_top_up = new ImageIcon(getClass().getResource("plane.jpg"));
-        ImageIcon image_train = new ImageIcon(getClass().getResource("train.jpg"));
+        // // this is for the image 
+        ImageIcon image_plane = new ImageIcon();
+        ImageIcon image_top_up = new ImageIcon();
+        ImageIcon image_train = new ImageIcon();
         list_of_image.add(image_train);
         list_of_image.add(image_top_up);
         list_of_image.add(image_plane);
@@ -111,17 +111,17 @@ public class HomePageWindow extends JFrame implements ActionListener{
                 new TrainPageWindow(); 
             }
             else if(btn.getIcon() == list_of_image.get(1)){
-                new TopUpWindow(datum, index);
+                new TopUpWindow(new Database(), index);
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
-                new PlanePageWindow();
+                new PlanePageWindow(new Database(), index);
                 //the coding
             }
             else{ 
                 String get_text = btn.getText(); 
                 if(get_text.equals(name_label[0]));
                 else if(get_text.equals(name_label[1]));
-                else if(get_text.equals(name_label[2]))new TopUpWindow(datum, idx);
+                else if(get_text.equals(name_label[2]))new TopUpWindow(datum, index);
                 else if(get_text.equals(name_label[3]))new LoginWindow();
             }
             dispose();

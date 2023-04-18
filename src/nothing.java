@@ -7,13 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class nothing extends JFrame implements ActionListener{
-    public static void main(String[] args) {
-        nothing not = new nothing();
-        not.setVisible(true);
-    }
+   
 
     JButton btn;
-
+    static int input;
+    static void change_input(int second){
+        input = second;
+    }
     public nothing(){
         ImageIcon image = new ImageIcon(getClass().getResource("regisbutton.jpg"));
         btn = new JButton(image);
@@ -25,10 +25,14 @@ public class nothing extends JFrame implements ActionListener{
         add(btn);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==btn){
             System.out.println("asik");
         }
+    }
+    public static void main(String[] args) {
+     
     }
 }

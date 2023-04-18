@@ -18,15 +18,13 @@ import javax.swing.JTextArea;
 
 public class PlanePageWindow extends JFrame implements ActionListener {
 
-    public static void main(String[] args) {
-        new PlanePageWindow(); 
-    }
     JFrame frame = new JFrame("this is frame 2");
     JLabel label_head = new JLabel();
     JButton button = new JButton();
     JPanel panel_container = new JPanel();
     JPanel panel2 = new JPanel(); 
     JPanel panel_head = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    static int index;
 
     private String plane_name[] = {
         "Lion Air", "Sriwijaya Air", "Garuda", "Batik Air",
@@ -57,7 +55,11 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         new ImageIcon(getClass().getResource("qantas_air (1).png")), new ImageIcon(getClass().getResource("citilink_air (1).png"))
     };
 
-    PlanePageWindow(){ 
+    public static void main(String[] args) {
+        new PlanePageWindow(new Database(), index); 
+    }
+    public PlanePageWindow(Database data, int idx){
+
     // this for note
     /*
      type of layout
@@ -65,6 +67,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
      gridlayout
      borderlayout
      */
+
+        index = idx;
         panel_container.setLayout(new GridLayout(9,5));
         for(int i = 0; i<plane_name.length; i++){
 
@@ -143,12 +147,16 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
             if(btn.getText() == "Home"){
-                // new home_page(data);
+                new HomePageWindow(new Database(), index);
                 dispose(); 
+            }
+            else if(btn.getText() == "Balance"){
+                new TopUpWindow(new Database(), index);
             }
             else{
                 for(int i = 0; i<more_button.length; i++){
                     if(btn.getText().equals(more_button[i])){
+                        final Integer inner = new Integer(i);
                         JFrame frame = new JFrame();
                         JPanel panel = new JPanel();
                         JPanel panel_field = new JPanel(); 
@@ -165,7 +173,11 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                             public void actionPerformed(ActionEvent e) {
                                 // this is for exit the program
                                 String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
-                                System.out.println(PIN);
+                                if(new Register().checkValidPinEnter(PIN, index)){
+                                    JOptionPane.showMessageDialog(null, "successfull buy your ticket");
+                                    new History(plane_name[inner], price[inner],destination[(destination.length - 1-inner)/(inner+1)], destination[inner], "1").insert_history(index); 
+                                    System.out.println(Database.user.get(index).history);
+                                }
                                 frame.setVisible(false);
                             } 
                         });

@@ -8,22 +8,16 @@ public class History {
     private String date;
 
     // setter 
-    void set_transportation_name(String name){ 
+    public History(String name, Double Price, String arrived, String departure, String date){ 
         this.transportation_name = name;
-    }
-    void set_ticket_price(Double price){
-        this.ticket_price = price;
-    }
-    void set_Arrival(String arrived){
-        this.Arrival = arrived;
-    }
-    void set_Departure(String departure){ 
+        this.ticket_price = Price;
+        this.Arrival = arrived; 
         this.Departure = departure;
+        this.date = date;
     }
-    void set_date(String date){
-        this.date = date; 
+    void insert_history(int index){ 
+        Database.user.get(index).history.add(this);
     }
-    
 
     // getter
     

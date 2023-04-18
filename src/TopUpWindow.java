@@ -43,7 +43,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         frame.setLayout(new BorderLayout());
         frame.getContentPane().setBackground(bgColor);
 
-        ImageIcon titleImg = new ImageIcon(getClass().getResource("TopUpJumbo.png"));
+        ImageIcon titleImg = new ImageIcon();
         titlePanel = new JPanel();
         titleLabel = new JLabel(titleImg);
         titlePanel.add(titleLabel, BorderLayout.NORTH);
@@ -58,7 +58,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         headerPanel.add(titPanel, BorderLayout.NORTH);
 
         contentPanel = new JPanel(new BorderLayout());
-        balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(idx).getBalance());
+        balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(index).getBalance());
         balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         // this is panel for label 
         JPanel balanceJPanel = new JPanel(new FlowLayout()); 
@@ -114,13 +114,13 @@ public class TopUpWindow extends JFrame implements ActionListener{
                 }
             }else{ 
                 if(btn.getText() == navigation[0]){
-                    new HomePageWindow(new Database(), new Register().getUseridx());
-                    dispose(); 
+                    new HomePageWindow(datum, index);
                 }
                 else if(btn.getText() == navigation[3]){
-                    new TopUpWindow(new Database(), new Register().getUseridx()); 
+                    new TopUpWindow(datum, index); 
                 }
             }
+            dispose(); 
         }
     }
 }
