@@ -62,7 +62,7 @@ public class Register {
         return true;
     }
     boolean checkValidPinEnter(String PIN , int index){
-        if(Database.user.get(index).getPIN() == PIN){
+        if(Database.user.get(index).getPIN().equals(PIN)){
             return true;
         }
         return false; 
