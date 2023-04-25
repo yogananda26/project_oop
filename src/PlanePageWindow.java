@@ -46,7 +46,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     private Double price[] = { 
         2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
         212000.0, 100000.0, 112100.0
-    };  
+    }; 
+    
     private ImageIcon image[] = {
         new ImageIcon(getClass().getResource("logo_lion_air (1).jpg")),
         new ImageIcon(getClass().getResource("Sriwijaya_air (1).png")), new ImageIcon(getClass().getResource("garuda_indonesia (1).png")),
