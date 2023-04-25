@@ -36,7 +36,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         "Manado", "Maluku"
     }; 
     private String navigation[] = {
-        "Home", "Date", "Profile", "Balance"
+        "Home", "Date", "Profile", "Balance", "History"
     };
     private String more_button[] ={
         "More for Lion Air", "More For Sriwijaya Air","More for Garuda",
@@ -116,7 +116,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             panel_container.add(panel_button_more);
 
         }
-        panel2.setLayout(new GridLayout(4, 1));
+        panel2.setLayout(new GridLayout(5, 1));
 
         for(String i : navigation){
             JButton button1 = new JButton(); 
@@ -153,6 +153,9 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             else if(btn.getText() == "Balance"){
                 new TopUpWindow(new Database(), index);
             }
+            else if(btn.getText() == "History"){
+                new HistoryWindow(index);
+            }
             else{
                 for(int i = 0; i<more_button.length; i++){
                     if(btn.getText().equals(more_button[i])){
@@ -172,11 +175,17 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 // this is for exit the program
-                                String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
-                                if(new Register().checkValidPinEnter(PIN, index)){
-                                    JOptionPane.showMessageDialog(null, "successfull buy your ticket");
-                                    new History(plane_name[inner], price[inner],destination[(destination.length - 1-inner)/(inner+1)], destination[inner], "1").insert_history(index); 
-                                    System.out.println(Database.user.get(index).history);
+                                for(int i = 3; i>=0; i--){
+                                    String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
+                                    if(new Register().checkValidPinEnter(PIN, index)){
+                                        JOptionPane.showMessageDialog(null, "successfull buy your ticket");
+                                        new History(plane_name[inner], price[inner],destination[(destination.length - 1-inner)/(inner+1)], destination[inner], "1").insert_history(index); 
+                                        System.out.println(Database.user.get(index).history);
+                                        break;
+                                    }
+                                    else{
+                                        JOptionPane.showMessageDialog(null, "Please input your exact password " + i +" attemps more");
+                                    }   
                                 }
                                 frame.setVisible(false);
                             } 
