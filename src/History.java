@@ -39,7 +39,7 @@ public class History {
     void insert_history(int index){ 
         Database.user.get(index).history.add(this);
     }
-    
+
     void print_all_history(int index){
         System.out.println("This is your History");
         try {

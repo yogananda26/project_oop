@@ -55,7 +55,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         new ImageIcon(getClass().getResource("air_asia_air (1).png")), new ImageIcon(getClass().getResource("singapore_airline (1).png")),
         new ImageIcon(getClass().getResource("qantas_air (1).png")), new ImageIcon(getClass().getResource("citilink_air (1).png"))
     };
-
+   
     public static void main(String[] args) {
         new PlanePageWindow(new Database(), index); 
     }
@@ -205,6 +205,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                 }
                                 // this is for exit the program
                                 frame.setVisible(false);
+                                
                             } 
                         });
                         button_no.addActionListener(new ActionListener() {

@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TopUpWindow extends JFrame implements ActionListener{
-
+    
     Font contentFont = new Font("Comic Sans MS", Font.PLAIN, 30);
     JFrame frame;
     JPanel titlePanel;
@@ -29,6 +29,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
     Database datum; 
     int index;
 
+  
     private String navigation[] = {
         "Home", "Date", "Profile", "Balance"
     };
@@ -81,9 +82,9 @@ public class TopUpWindow extends JFrame implements ActionListener{
         contentPanel.add(balancePanel, BorderLayout.CENTER);
 
         // help ini taro dipaling bwh
-        ImageIcon bgImage = new ImageIcon(getClass().getResource("topupbalancebg.png"));
-        JLabel bgLabel = new JLabel(bgImage);
-        contentPanel.add(bgLabel, BorderLayout.NORTH);
+        // ImageIcon bgImage = new ImageIcon(getClass().getResource("topupbalancebg.png"));
+        // JLabel bgLabel = new JLabel(bgImage);
+        // contentPanel.add(bgLabel, BorderLayout.NORTH);
         headerPanel.add(contentPanel, BorderLayout.CENTER);
 
         for(String i : navigation){

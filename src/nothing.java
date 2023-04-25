@@ -32,7 +32,5 @@ public class nothing extends JFrame implements ActionListener{
             System.out.println("asik");
         }
     }
-    public static void main(String[] args) {
-     
-    }
+   
 }
