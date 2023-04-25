@@ -81,7 +81,7 @@ public class Register {
     }
 
     public void addUser(String fullName, String email, String password, String username, String gender, String PIN, String phone){
-        User users = new User(fullName, username, email, password, PIN, gender, phone, 0);
+        User users = new User(fullName, username, email, password, PIN, gender, phone, 0.0);
         Database.user.add(users);
     }
 
@@ -117,7 +117,7 @@ public class Register {
     }
 
     void addUserAmount(Long addAmount, int idx){
-        Long temp = Database.user.get(idx).getBalance();
+        Double temp = Database.user.get(idx).getBalance();
         Database.user.get(idx).setBalance(temp + addAmount);
     }
 
