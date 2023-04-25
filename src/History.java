@@ -25,15 +25,15 @@ public class History {
     }
 
     void print_all_history(int index){
+        System.out.println("This is your History");
         try {
             ArrayList <History> temp = Database.user.get(index).history;
-            System.out.println("This is your History");
             for(int i = 0; i<temp.size(); i++){
                 System.out.println(temp.get(i).transportation_name);
-                System.out.println(temp.get(index).ticket_price);
-                System.out.println(temp.get(index).Arrival);
-                System.out.println(temp.get(index).Departure);
-                System.out.println(temp.get(index).date);
+                System.out.println(temp.get(i).ticket_price);
+                System.out.println(temp.get(i).Arrival);
+                System.out.println(temp.get(i).Departure);
+                System.out.println(temp.get(i).date);
                 System.out.println("\n");
             }
         } catch (IndexOutOfBoundsException e) {

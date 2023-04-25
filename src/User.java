@@ -8,11 +8,11 @@ public class User {
     private String PIN;
     private String gender;
     private String phone;
-    private long balance;
+    private Double balance;
 
     ArrayList <History> history = new ArrayList<>();
 
-    public User(String fullName, String username, String email, String password, String PIN, String gender, String phone, long balance) {
+    public User(String fullName, String username, String email, String password, String PIN, String gender, String phone, Double balance) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
@@ -65,10 +65,10 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public long getBalance() {
+    public Double getBalance() {
         return balance;
     }
-    public void setBalance(long balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 }
