@@ -37,8 +37,8 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
         titlePanel.setLayout(null);
 
         titleLabel = new JLabel();
-        titleLabel.setText("LOGIN BABY!");
-        titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        titleLabel.setText("LOGIN");
+        titleLabel.setFont(new Font("Open Sans", Font.BOLD, 30));
         titleLabel.setBounds(190, 10, 1000, 50);
 
         compLayer = new JLayeredPane();
@@ -47,32 +47,33 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
         compLayer.setBackground(Color.white);
 
         emailLabel = new JLabel("Email         :");
-        emailLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        emailLabel.setFont(new Font("Open Sans", Font.PLAIN, 20));
         emailLabel.setBounds(18, 15, 1000, 50);
         passwordLabel = new JLabel("Password   :");
-        passwordLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        passwordLabel.setFont(new Font("Open Sans", Font.PLAIN, 20));
         passwordLabel.setBounds(18, 60, 1000, 50);
         emailField = new JTextField();
         emailField.setBounds(130, 29, 400, 25);
         emailField.setText("Enter Your Email!");
-        emailField.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        emailField.setFont(new Font("Open Sans", Font.PLAIN, 18));
         passwordField = new JPasswordField();
         passwordField.setBounds(130, 74, 400, 25);
-        passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        passwordField.setFont(new Font("Open Sans", Font.PLAIN, 18));
 
-        loginBtn = new JButton();
+        ImageIcon icon = new ImageIcon(getClass().getResource("loginbutton.png"));
+        loginBtn = new JButton(icon);
         loginBtn.setText("Login");
-        loginBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        loginBtn.setBounds(215, 130, 120, 40);
+        loginBtn.setFont(new Font("Open Sans", Font.BOLD, 20));
+        loginBtn.setBounds(215, 130, 160, 40);
         loginBtn.setFocusable(false);
         loginBtn.addActionListener(this);
 
         haveAcc = new JLabel("Have an account?");
-        haveAcc.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        haveAcc.setFont(new Font("Open Sans", Font.PLAIN, 12));
         haveAcc.setBounds(232, 160, 250, 40);
         registerBtn = new JButton();
         registerBtn.setText("Register");
-        registerBtn.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        registerBtn.setFont(new Font("Open Sans", Font.PLAIN, 12));
         registerBtn.setBounds(215, 180, 120, 23);
         registerBtn.setContentAreaFilled(false);
         registerBtn.setFocusable(false);

@@ -1,11 +1,13 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class RegisterWindow extends JFrame implements ActionListener, MouseListener{
+public class RegisterWindow extends JFrame implements ActionListener, MouseListener, Border{
 
     JFrame register;
     JPanel titlePanel;
@@ -17,12 +19,12 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
     JRadioButton maleBtn, femaleBtn;
     JButton loginBtn, submitBtn;
 
-    Font labelFont = new Font("Times New Roman", Font.PLAIN, 20);
-    Font fieldFont = new Font("Times New Roman", Font.PLAIN, 18);
+    Font labelFont = new Font("Open Sans", Font.PLAIN, 20);
+    Font fieldFont = new Font("Open Sans", Font.PLAIN, 18);
 
     public RegisterWindow() {
         // container
-        Color bgColor = new Color(70, 188, 224);
+        Color bgColor = new Color(105, 105, 105);
         register = new JFrame("Travelly!!");
         register.setSize(600, 630);
         register.getContentPane().setBackground(bgColor);
@@ -38,9 +40,9 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         titlePanel.setLayout(null);
 
         titleLabel = new JLabel();
-        titleLabel.setText("REGISTER BABY!");
-        titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        titleLabel.setBounds(165, 10, 1000, 50);
+        titleLabel.setText("REGISTER YOURSELF!");
+        titleLabel.setFont(new Font("Open Sans", Font.BOLD, 30));
+        titleLabel.setBounds(140, 10, 1000, 50);
 
         compLayer = new JLayeredPane();
         compLayer.setBounds(18, 95, 550, 470);
@@ -116,26 +118,27 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         genderLabel.setFont(labelFont);
         genderLabel.setBounds(18, 278, 1000, 50);
 
-        // ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.jpg"));
-        submitBtn = new JButton("Submit");
+        ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.png"));
+        submitBtn = new JButton(submitIcon);
         submitBtn.setBounds(190, 380, 180, 49);
-        // submitBtn.setContentAreaFilled(false);
+        submitBtn.setContentAreaFilled(false);
         submitBtn.setFocusable(false);
+        submitBtn.setBorderPainted(false);
         submitBtn.addActionListener(this);
 
         haveAcc = new JLabel("Have an account?");
-        haveAcc.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        haveAcc.setFont(new Font("Open Sans", Font.PLAIN, 12));
         haveAcc.setBounds(243, 420, 250, 40);
         loginBtn = new JButton();
         loginBtn.setText("Login");
-        loginBtn.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        loginBtn.setBounds(255, 440, 60, 23);
+        loginBtn.setFont(new Font("Open Sans", Font.PLAIN, 12));
+        loginBtn.setBounds(255, 440, 70, 23);
         loginBtn.setContentAreaFilled(false);
         loginBtn.setFocusable(false);
         loginBtn.setBorderPainted(false);
         loginBtn.addActionListener(this);
 
-        Font signFont = new Font("Times New Roman", Font.PLAIN, 10);
+        Font signFont = new Font("Open Sans", Font.PLAIN, 10);
         signFullName = new JLabel("Alphabetic only!");
         signFullName.setFont(signFont);
         signFullName.setForeground(Color.RED);
@@ -359,5 +362,23 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         } else if (e.getSource()==usernameField){
             signUsername.setVisible(false);
         }
+    }
+
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'paintBorder'");
+    }
+
+    @Override
+    public Insets getBorderInsets(Component c) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBorderInsets'");
+    }
+
+    @Override
+    public boolean isBorderOpaque() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isBorderOpaque'");
     }
 }
