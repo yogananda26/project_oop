@@ -31,15 +31,17 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
         login.setLocationRelativeTo(null);
 
         // component
+        Color bgColor = new Color(105, 105, 105);
         titlePanel = new JPanel();
         titlePanel.setBounds(0, 0, 600, 75);
-        titlePanel.setBackground(Color.decode("#c9ffeb"));
+        // titlePanel.setBackground(Color.decode("#c9ffeb"));
+        titlePanel.setBackground(bgColor);
         titlePanel.setLayout(null);
 
         titleLabel = new JLabel();
         titleLabel.setText("LOGIN");
         titleLabel.setFont(new Font("Open Sans", Font.BOLD, 30));
-        titleLabel.setBounds(190, 10, 1000, 50);
+        titleLabel.setBounds(240, 10, 1000, 50);
 
         compLayer = new JLayeredPane();
         compLayer.setBounds(18, 95, 550, 220);
@@ -64,7 +66,7 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
         loginBtn = new JButton(icon);
         loginBtn.setText("Login");
         loginBtn.setFont(new Font("Open Sans", Font.BOLD, 20));
-        loginBtn.setBounds(215, 130, 160, 40);
+        loginBtn.setBounds(180, 130, 150, 40);
         loginBtn.setFocusable(false);
         loginBtn.addActionListener(this);
 

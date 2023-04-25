@@ -79,6 +79,11 @@ public class TopUpWindow extends JFrame implements ActionListener{
         balancePanel.add(balanceField);
         balancePanel.add(balanceBtn);
         contentPanel.add(balancePanel, BorderLayout.CENTER);
+
+        // help ini taro dipaling bwh
+        ImageIcon bgImage = new ImageIcon(getClass().getResource("topupbalancebg.png"));
+        JLabel bgLabel = new JLabel(bgImage);
+        contentPanel.add(bgLabel, BorderLayout.NORTH);
         headerPanel.add(contentPanel, BorderLayout.CENTER);
 
         for(String i : navigation){
