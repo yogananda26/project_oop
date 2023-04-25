@@ -11,6 +11,7 @@ public class User {
     private Double balance;
 
     ArrayList <History> history = new ArrayList<>();
+    
 
     public User(String fullName, String username, String email, String password, String PIN, String gender, String phone, Double balance) {
         this.fullName = fullName;

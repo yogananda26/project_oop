@@ -3,12 +3,15 @@ import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
+import org.w3c.dom.UserDataHandler;
+
 public class History {
     private String transportation_name;
     private Double ticket_price; 
     private String Arrival;
     private String Departure;
     private String date;
+    private ArrayList<PassengerSubmitWindow> user_booking = new ArrayList<>();
 
     // setter 
     public History(String name, Double Price, String arrived, String departure, String date){ 
@@ -19,6 +22,19 @@ public class History {
         this.date = date;
     }
     public History(){};//this is for empty contructor
+    int get_passager_lenght(){
+        return user_booking.size(); 
+    }
+    ArrayList<PassengerSubmitWindow> get_array_passanger(){
+        return user_booking;
+    }
+    String get_plane_name(){
+        return transportation_name;
+    }
+    
+    void insert_history_booking(int index_user, int index_history, PassengerSubmitWindow passager){
+        Database.user.get(index_user).history.get(index_history).user_booking.add(passager);
+    }
 
     void insert_history(int index){ 
         Database.user.get(index).history.add(this);

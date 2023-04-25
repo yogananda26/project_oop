@@ -176,12 +176,15 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 // this is for cheking if our balance is enough or not
-                                if(Database.user.get(index).getBalance() <= price[inner]){
-                                    JOptionPane.showMessageDialog(null, "Your balance is not enough, Please top up first");
+                                Integer input = Integer.parseInt(JOptionPane.showInputDialog(null, "Please input how many Ticket that you want to add" )); 
+                                if(Database.user.get(index).getBalance() < input*price[inner]){
+                                    JOptionPane.showMessageDialog(null, "Your balance is not enough, Please top up first, Must have min : " +
+                                    input*price[inner]);
                                     dispose();
                                     new TopUpWindow(data, index);
                                 }
                                 else{
+                                    new PassengerSubmitWindow(0, input, plane_name[inner], index);
                                     for(int i = 3; i>=0; i--){
                                         String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
                                         if(PIN == null){

@@ -16,11 +16,15 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     Font labelFont = new Font("Times New Roman", Font.PLAIN, 20);
     Font fieldFont = new Font("Times New Roman", Font.PLAIN, 18);
     int currNumOfPass, numOfPass;
+    String plane;
+    int index;
 
-    public PassengerSubmitWindow(int curr, int num){
+    public PassengerSubmitWindow(int curr, int num, String plane_name, int idx){
         //passingan dari class lain
         currNumOfPass = curr;
         numOfPass = num;
+        plane = plane_name;
+        index = idx;
         
         Color bgColor = new Color(70, 188, 224);
         setTitle("TRAVELLY");
@@ -96,10 +100,17 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        String name; 
+        Integer age;
+        String passportNum;
+        String NIN;
+        String gender; 
+
+
         if (e.getSource().equals(submitBtn)) {
             Integer check = 1;
             try {
-                String name = nameField.getText();
+                name = nameField.getText();
                 if (name.length() == 0) throw new IllegalArgumentException();
                 check *= 1;
             }catch (Exception exc){
@@ -107,7 +118,7 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 check *= 0;
             }
             try {
-                Integer age = Integer.parseInt(ageField.getText());
+                age = Integer.parseInt(ageField.getText());
                 if (age <= 0) throw new IllegalArgumentException();
                 check *= 1;
             }catch (Exception exc){
@@ -115,7 +126,7 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 check *= 0;
             }
             try {
-                String passportNum = passportNumField.getText();
+                passportNum = passportNumField.getText();
                 if (passportNum.length() == 0 || Long.parseLong(passportNum) < 0) throw new IllegalArgumentException();
                 check *= 1;
             }catch (Exception exc){
@@ -123,14 +134,13 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 check *= 0;
             }
             try {
-                String NIN = NINField.getText();
+                NIN = NINField.getText();
                 if (NIN.length() != 16 || Long.parseLong(NIN) < 0) throw new IllegalArgumentException();
                 check *= 1;
             }catch (Exception exc){
                 JOptionPane.showMessageDialog(null, "NIN must be a number and 16 characters length!", "NIN", JOptionPane.ERROR_MESSAGE);
                 check *= 0;
             }
-            String gender = "";
             if (maleBtn.isSelected()) {
                 gender = "Male";
             } else if (femaleBtn.isSelected()) {
@@ -144,13 +154,19 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 //masukkin data bookingan ke data dummy
                 currNumOfPass+=1;
                 passengerNumLabel.setText("PASSENGER "+(currNumOfPass+1));
-                System.out.println(gender);
+                System.out.println(gender);  
 
                 nameField.setText("");
                 ageField.setText("");
                 passportNumField.setText("");
                 NINField.setText("");
                 genderBtn.clearSelection();
+
+                for(int i = 0; i<new History().get_passager_lenght(); i++){
+                    if(Database.user.get(index).history.get(i).get_plane_name().equals(plane)){
+                        new History().insert_history_booking(index, i, this);
+                    }
+                }
                 if (currNumOfPass == numOfPass){
                     dispose();
                 }
