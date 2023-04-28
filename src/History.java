@@ -21,6 +21,7 @@ public class History {
         this.Departure = departure;
         this.date = date;
     }
+    
     public History(){};//this is for empty contructor
     int get_passager_lenght(){
         return user_booking.size(); 
@@ -51,6 +52,16 @@ public class History {
                 System.out.println(temp.get(i).Departure);
                 System.out.println(temp.get(i).date);
                 System.out.println("\n");
+
+                ArrayList <PassengerSubmitWindow> temp1 = Database.user.get(index).history.get(i).get_array_passanger();
+                for(int j = 0; j<Database.user.get(index).history.get(i).get_passager_lenght(); j++){  
+                    System.out.println(temp1.get(j).name);
+                    System.out.println(temp1.get(j).age);
+                    System.out.println(temp1.get(j).passportNum);
+                    System.out.println(temp1.get(j).NIN);
+                    System.out.println(temp1.get(j).gender);
+                }
+                System.out.println("next person");
             }
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null,"You Dont Have Any Record Before");
@@ -58,5 +69,4 @@ public class History {
     }
 
     // getter
-    
 }

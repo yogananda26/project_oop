@@ -29,6 +29,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
     Database datum; 
     int index;
 
+    
   
     private String navigation[] = {
         "Home", "Date", "Profile", "Balance"

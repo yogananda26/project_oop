@@ -58,6 +58,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
    
     public static void main(String[] args) {
         new PlanePageWindow(new Database(), index); 
+        // System.out.println("main");
     }
     public PlanePageWindow(Database data, int idx){
 
@@ -184,7 +185,6 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                     new TopUpWindow(data, index);
                                 }
                                 else{
-                                    new PassengerSubmitWindow(0, input, plane_name[inner], index);
                                     for(int i = 3; i>=0; i--){
                                         String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
                                         if(PIN == null){
@@ -195,6 +195,15 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                             new History(plane_name[inner], price[inner],destination[(destination.length - 1-inner)/(inner+1)], destination[inner], "1").insert_history(index);
                                             Double remaining_balance = Database.user.get(index).getBalance();  
                                             Database.user.get(index).setBalance(remaining_balance - price[inner]);
+
+                                            for(int j = 0; j<Database.user.get(index).history.size(); j++){
+                                                if(Database.user.get(index).history.get(j).get_plane_name().equals(plane_name[inner])){
+                                                   for(int k = 0; k<input; k++){
+                                                    new History().insert_history_booking(index, j, new PassengerSubmitWindow(0, 1));
+                                                   }
+                                                }
+                                            }
+
                                             System.out.println(Database.user.get(index).history);
                                             break;
                                         }

@@ -18,13 +18,18 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     int currNumOfPass, numOfPass;
     String plane;
     int index;
+    String name; 
+    Integer age;
+    String passportNum;
+    String NIN;
+    String gender; 
+    
 
-    public PassengerSubmitWindow(int curr, int num, String plane_name, int idx){
+    public PassengerSubmitWindow(int curr, int num){
+       
         //passingan dari class lain
         currNumOfPass = curr;
         numOfPass = num;
-        plane = plane_name;
-        index = idx;
         
         Color bgColor = new Color(70, 188, 224);
         setTitle("TRAVELLY");
@@ -100,12 +105,6 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String name; 
-        Integer age;
-        String passportNum;
-        String NIN;
-        String gender; 
-
 
         if (e.getSource().equals(submitBtn)) {
             Integer check = 1;
@@ -162,11 +161,7 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 NINField.setText("");
                 genderBtn.clearSelection();
 
-                for(int i = 0; i<new History().get_passager_lenght(); i++){
-                    if(Database.user.get(index).history.get(i).get_plane_name().equals(plane)){
-                        new History().insert_history_booking(index, i, this);
-                    }
-                }
+
                 if (currNumOfPass == numOfPass){
                     dispose();
                 }
