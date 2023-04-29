@@ -17,6 +17,8 @@ public class HistoryWindow extends JFrame implements ActionListener {
     JFrame main_frame = new JFrame("History Frame");
     JPanel panel_head = new JPanel(new BorderLayout()); 
 
+    // testing this
+    //second_testing
 
     public HistoryWindow(int index){
         //this is for frontend thing
