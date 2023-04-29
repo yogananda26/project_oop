@@ -41,6 +41,7 @@ public class Register {
         return false;
     }
 
+
     boolean checkValidUsername(String username){
         for (int i = 0; i < userSize; i++){
             if (username.equals(Database.user.get(i).getUsername())){
