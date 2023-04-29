@@ -2,7 +2,6 @@ import javax.xml.crypto.Data;
 
 public class Register {
 
-
     int userSize = Database.user.size();
     private int idx = 0;
 

@@ -121,7 +121,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
 
         ImageIcon submitIcon = new ImageIcon(getClass().getResource("registerbutton.png"));
         submitBtn = new JButton(submitIcon);
-        submitBtn.setBounds(190, 380, 180, 49);
+        submitBtn.setBounds(200, 380, 180, 49);
         submitBtn.setContentAreaFilled(false);
         submitBtn.setFocusable(false);
         submitBtn.setBorderPainted(false);

@@ -64,9 +64,8 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
 
         ImageIcon icon = new ImageIcon(getClass().getResource("loginbutton.png"));
         loginBtn = new JButton(icon);
-        loginBtn.setText("Login");
         loginBtn.setFont(new Font("Open Sans", Font.BOLD, 20));
-        loginBtn.setBounds(180, 130, 150, 40);
+        loginBtn.setBounds(200, 130, 160, 40);
         loginBtn.setFocusable(false);
         loginBtn.addActionListener(this);
 

@@ -59,7 +59,7 @@ public class HomePageWindow extends JFrame implements ActionListener{
         panel3.setLayout(new GridLayout(1,3));
 
         // // this is for the image 
-        ImageIcon image_plane = new ImageIcon();
+        ImageIcon image_plane = new ImageIcon(getClass().getResource("airplanelogo.jpeg"));
         ImageIcon image_top_up = new ImageIcon();
         ImageIcon image_train = new ImageIcon();
         list_of_image.add(image_train);
