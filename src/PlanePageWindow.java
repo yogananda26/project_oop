@@ -97,7 +97,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             label_destination.setFont(new Font(getName(), ABORT, 20));
             label_destination.setHorizontalAlignment(JLabel.CENTER);
             // label_destination.setPreferredSize(new Dimension(200, 200));
-            panel_destination.setPreferredSize(new Dimension(500, 200));
+            panel_destination.setPreferredSize(new Dimension(400, 200));
     
             
             panel_destination.add(label_destination);
