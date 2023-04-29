@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 
 public class RegisterWindow extends JFrame implements ActionListener, MouseListener, Border{
 
+
     JFrame register;
     JPanel titlePanel;
     JLabel titleLabel, fullNameLabel, emailLabel, passwordLabel, confirmLabel, phoneLabel, usernameLabel, genderLabel,
