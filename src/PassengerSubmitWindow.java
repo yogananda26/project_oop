@@ -26,7 +26,6 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     int index_input;
    
     
-
     public PassengerSubmitWindow(int curr, int num, int idx, int idx_input){
        
         //passingan dari class lain
