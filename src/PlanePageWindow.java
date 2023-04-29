@@ -149,13 +149,15 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
             if(btn.getText() == "Home"){
-                new HomePageWindow(new Database(), index);
                 dispose(); 
+                new HomePageWindow(new Database(), index);
             }
             else if(btn.getText() == "Balance"){
+                dispose();
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.getText() == "History"){
+                dispose();
                 new HistoryWindow(index);
             }
             else{
@@ -198,9 +200,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
 
                                             for(int j = 0; j<Database.user.get(index).history.size(); j++){
                                                 if(Database.user.get(index).history.get(j).get_plane_name().equals(plane_name[inner])){
-                                                   for(int k = 0; k<input; k++){
-                                                    new History().insert_history_booking(index, j, new PassengerSubmitWindow(0, 1));
-                                                   }
+                                                   new PassengerSubmitWindow(0, input, index, j); 
                                                 }
                                             }
 
@@ -228,10 +228,10 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                         // this is for the info
                         JTextArea text_ticket = new JTextArea(
                             "============================\n\n" + 
-                            "Plane      : " + plane_name[i] + "\n" + 
-                            "Price      : Rp" + price[i] + ";\n" +
+                            "Plane       : " + plane_name[i] + "\n" + 
+                            "Price       : Rp" + price[i] + ";\n" +
                             "Departure : " + destination[i] + "\n" +
-                            "Arrival    : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
+                            "Arrival     : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
                             "============================"
                         );
                         text_ticket.setOpaque(false);

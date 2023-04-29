@@ -108,23 +108,27 @@ public class HomePageWindow extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.getIcon() == list_of_image.get(0)){ 
+                dispose();
                 new TrainPageWindow(); 
             }
             else if(btn.getIcon() == list_of_image.get(1)){
+                dispose();
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.getIcon() == list_of_image.get(2)){ 
+                dispose();
                 new PlanePageWindow(new Database(), index);
                 //the coding
             }
             else{ 
+                dispose();
                 String get_text = btn.getText(); 
                 if(get_text.equals(name_label[0]));
                 else if(get_text.equals(name_label[1]));
                 else if(get_text.equals(name_label[2]))new TopUpWindow(datum, index);
                 else if(get_text.equals(name_label[3]))new LoginWindow();
             }
-            dispose();
+            
             // ArrayList<ImageIcon> list
         }
     }

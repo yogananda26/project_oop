@@ -23,13 +23,17 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
     String passportNum;
     String NIN;
     String gender; 
+    int index_input;
+   
     
 
-    public PassengerSubmitWindow(int curr, int num){
+    public PassengerSubmitWindow(int curr, int num, int idx, int idx_input){
        
         //passingan dari class lain
         currNumOfPass = curr;
         numOfPass = num;
+        index = idx;
+        index_input = idx_input; 
         
         Color bgColor = new Color(70, 188, 224);
         setTitle("TRAVELLY");
@@ -95,8 +99,10 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
         mainPanel.add(headerPanel);
         mainPanel.add(fieldPanel);
         mainPanel.add(footerPanel);
+        
 
         setContentPane(mainPanel);
+        this.setLocationRelativeTo(null);
         pack();
         setVisible(true);
         setResizable(false);
@@ -151,6 +157,7 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
 
             if (check == 1){
                 //masukkin data bookingan ke data dummy
+                new History().insert_history_booking(index, index_input, new Passanger(plane, name, check, passportNum, NIN, gender)); 
                 currNumOfPass+=1;
                 passengerNumLabel.setText("PASSENGER "+(currNumOfPass+1));
                 System.out.println(gender);  
@@ -160,7 +167,6 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
                 passportNumField.setText("");
                 NINField.setText("");
                 genderBtn.clearSelection();
-
 
                 if (currNumOfPass == numOfPass){
                     dispose();

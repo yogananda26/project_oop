@@ -113,7 +113,8 @@ public class TopUpWindow extends JFrame implements ActionListener{
                     String PIN = JOptionPane.showInputDialog(null, "Input Your PIN : ");
                     if (new Register().checkAddBalancePIN(PIN, amount, index)){
                         JOptionPane.showMessageDialog(null, "Added to your balance!");
-                        balanceLabel.setText("Here's your current balance : Rp." + Database.user.get(index).getBalance());
+                        balanceLabel.setText("Here's your current balance : Rp." + Database.user.get(index).getBalance().toString());
+                        balanceField.setText("");
                     } else {
                         JOptionPane.showMessageDialog(null, "Wrong PIN!", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
                     }
