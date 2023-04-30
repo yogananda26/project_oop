@@ -1,27 +1,21 @@
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.concurrent.Flow;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.xml.crypto.Data;
 
-
-public class HomePageWindow extends JFrame implements ActionListener{
+public class HomePageWindow extends JFrame implements ActionListener, MouseListener{
     public static void main(String[] args) {
         new HomePageWindow(new Database(),0); 
     }
@@ -33,21 +27,29 @@ public class HomePageWindow extends JFrame implements ActionListener{
     private JPanel panel2 = new JPanel(); 
     private JPanel panel3 = new JPanel(); 
 
-
     private JButton button_plane; 
     private JButton button_train;
     private JButton top_up;
 
-    private ArrayList <ImageIcon> list_of_image = new ArrayList<>(); 
+    JButton[] buttonmenu = new JButton[3];
     private Database datum;
     private int index; 
 
     // int idx = new Register().getUseridx();
     // Database temp = new Register().getData();
 
+    private String[] image = new String[]{
+        "trainlogo.jpeg", "topuplogo1.jpeg", "airplanelogo.jpeg"
+    };
+
+    private String[] hoverimg = new String[]{
+        "train", "topup", "airplane"
+    };
+
     private String name_label[] = {
         "Date", "Profile", "Balance","Log out"
     };
+
     HomePageWindow(Database data, int idx){ 
         datum = data;
         index = idx;
@@ -57,14 +59,6 @@ public class HomePageWindow extends JFrame implements ActionListener{
         panel.setLayout(new GridLayout(4,1));
         panel2.setLayout(new FlowLayout(1, 10, 10));
         panel3.setLayout(new GridLayout(1,3));
-
-        // // this is for the image 
-        ImageIcon image_plane = new ImageIcon(getClass().getResource("airplanelogo.jpeg"));
-        ImageIcon image_top_up = new ImageIcon();
-        ImageIcon image_train = new ImageIcon();
-        list_of_image.add(image_train);
-        list_of_image.add(image_top_up);
-        list_of_image.add(image_plane);
 
         // this is for the button 
         for(String i : name_label){
@@ -76,22 +70,31 @@ public class HomePageWindow extends JFrame implements ActionListener{
             panel.add(button_new);
         }
 
-        for(ImageIcon j : list_of_image){
-            JButton button_new_feature = new JButton(j);
-            button_new_feature.setPreferredSize(new Dimension(400,500));;
-            button_new_feature.setBackground(Color.WHITE);
-            button_new_feature.setFocusable(false);
-            button_new_feature.addActionListener(this);
-            panel2.add(button_new_feature);
-            // panel3.add(button_new_feature);
+        for (int i = 0; i < 3; i++){
+            buttonmenu[i] = new JButton(new ImageIcon("bin/" + image[i]));
+            buttonmenu[i].setPreferredSize(new Dimension(400, 500));;
+            buttonmenu[i].setFocusable(false);
+            buttonmenu[i].addActionListener(this);
+            buttonmenu[i].addMouseListener(this);
+            panel2.add(buttonmenu[i]);
         }
+
+        // for(ImageIcon j : list_of_image){
+        //     JButton button_new_feature = new JButton(j);
+        //     button_new_feature.setPreferredSize(new Dimension(400,500));;
+        //     button_new_feature.setBackground(Color.WHITE);
+        //     button_new_feature.setFocusable(false);
+        //     button_new_feature.addActionListener(this);
+        //     panel2.add(button_new_feature);
+        //     // panel3.add(button_new_feature);
+        // }
 
         panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel3.setPreferredSize(new Dimension(100, 70));
-        label.setText("Travelly App");
-        label.setFont(new Font("Helvetica", Font.PLAIN, 50));
+        label.setText("Book for your holiday!!!");
+        label.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
         panel3.add(label);
-        panel3.setBackground(new Color(79, 188, 224));
+        panel3.setBackground(new Color(105, 105, 105));
 
 
         button.setSize(1920, 1080);
@@ -107,17 +110,17 @@ public class HomePageWindow extends JFrame implements ActionListener{
     
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
-            if(btn.getIcon() == list_of_image.get(0)){ 
-                dispose();
+            if(btn.equals(buttonmenu[0])){ 
                 new TrainPageWindow(); 
-            }
-            else if(btn.getIcon() == list_of_image.get(1)){
                 dispose();
+            }
+            else if(btn.equals(buttonmenu[1])){
                 new TopUpWindow(new Database(), index);
-            }
-            else if(btn.getIcon() == list_of_image.get(2)){ 
                 dispose();
+            }
+            else if(btn.equals(buttonmenu[2])){ 
                 new PlanePageWindow(new Database(), index);
+                dispose();
                 //the coding
             }
             else{ 
@@ -132,7 +135,36 @@ public class HomePageWindow extends JFrame implements ActionListener{
             // ArrayList<ImageIcon> list
         }
     }
-};
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+       
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        for (int i = 0; i < 3; i++){
+            if (e.getSource()==buttonmenu[i]){
+                buttonmenu[i].setIcon(new ImageIcon("bin/"+hoverimg[i]+"enter.png"));
+            }
+        }
+    }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        for (int i = 0; i < 3; i++){
+            if (e.getSource() == buttonmenu[i]){
+                buttonmenu[i].setIcon(new ImageIcon("bin/" + image[i]));
+            }
+        }
+    }
+}
+// };
 
 /**
  * Innerhome_page
