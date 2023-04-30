@@ -7,6 +7,7 @@ public class Register {
 
    public static void main(String[] args) {
     new RegisterWindow();
+    // System.out.println("main");
    }
 
     boolean checkValidEmail(String email){

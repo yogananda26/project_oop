@@ -23,6 +23,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
     Font labelFont = new Font("Open Sans", Font.PLAIN, 20);
     Font fieldFont = new Font("Open Sans", Font.PLAIN, 18);
 
+    
     public RegisterWindow() {
         // container
         Color bgColor = new Color(105, 105, 105);
