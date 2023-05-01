@@ -19,8 +19,6 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
     JLabel haveAcc;
     JButton registerBtn;
     
-
-
     public LoginWindow() {
         // container
         login = new JFrame("Travelly!!");
