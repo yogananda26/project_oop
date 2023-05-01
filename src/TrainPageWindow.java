@@ -15,11 +15,13 @@ import javax.swing.JPanel;
 
 public class TrainPageWindow extends JFrame implements ActionListener {
     JPanel panel = new JPanel();
+    int index; 
   
     private String name_feature[] = {
         "Home", "Date", "Profile", "Balance"
     };
-    TrainPageWindow(){   
+    TrainPageWindow(int idx){
+        index = idx;   
         panel.setLayout(new GridLayout(4 ,1));
         this.setLayout(new GridLayout());
         for(String i : name_feature){
@@ -39,10 +41,13 @@ public class TrainPageWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof JButton btn){
-            if(btn.getText() == "Home"){
-                // new home_page(new Database()); 
-            }
             dispose();
+            if(btn.getText() == "Home"){
+                new HomePageWindow(new Database(), index); 
+            }
+            else if(){
+                
+            }
         }
     }
 

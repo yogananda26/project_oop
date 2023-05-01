@@ -27,10 +27,6 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     private JPanel panel2 = new JPanel(); 
     private JPanel panel3 = new JPanel(); 
 
-    private JButton button_plane; 
-    private JButton button_train;
-    private JButton top_up;
-
     JButton[] buttonmenu = new JButton[3];
     private Database datum;
     private int index; 
@@ -79,16 +75,6 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
             panel2.add(buttonmenu[i]);
         }
 
-        // for(ImageIcon j : list_of_image){
-        //     JButton button_new_feature = new JButton(j);
-        //     button_new_feature.setPreferredSize(new Dimension(400,500));;
-        //     button_new_feature.setBackground(Color.WHITE);
-        //     button_new_feature.setFocusable(false);
-        //     button_new_feature.addActionListener(this);
-        //     panel2.add(button_new_feature);
-        //     // panel3.add(button_new_feature);
-        // }
-
         panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel3.setPreferredSize(new Dimension(100, 70));
         label.setText("Book for your holiday!!!");
@@ -111,28 +97,23 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.equals(buttonmenu[0])){ 
-                new TrainPageWindow(); 
-                dispose();
+                new TrainPageWindow(index); 
             }
             else if(btn.equals(buttonmenu[1])){
                 new TopUpWindow(new Database(), index);
-                dispose();
             }
             else if(btn.equals(buttonmenu[2])){ 
                 new PlanePageWindow(new Database(), index);
-                dispose();
                 //the coding
             }
             else{ 
-                dispose();
                 String get_text = btn.getText(); 
                 if(get_text.equals(name_label[0]));
                 else if(get_text.equals(name_label[1]));
                 else if(get_text.equals(name_label[2]))new TopUpWindow(datum, index);
                 else if(get_text.equals(name_label[3]))new LoginWindow();
-            }
-            
-            // ArrayList<ImageIcon> list
+            } 
+            dispose();
         }
     }
     @Override
@@ -164,8 +145,3 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         }
     }
 }
-// };
-
-/**
- * Innerhome_page
- */

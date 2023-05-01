@@ -48,27 +48,21 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         212000.0, 100000.0, 112100.0
     }; 
 
-    private ImageIcon image[] = {
-        new ImageIcon(getClass().getResource("logo_lion_air (1).jpg")),
-        new ImageIcon(getClass().getResource("Sriwijaya_air (1).png")), new ImageIcon(getClass().getResource("garuda_indonesia (1).png")),
-        new ImageIcon(getClass().getResource("batik_air (1).png")), new ImageIcon(getClass().getResource("super_air_jet (1).png")),
-        new ImageIcon(getClass().getResource("air_asia_air (1).png")), new ImageIcon(getClass().getResource("singapore_airline (1).png")),
-        new ImageIcon(getClass().getResource("qantas_air (1).png")), new ImageIcon(getClass().getResource("citilink_air (1).png"))
+    private String image[] = {
+        "logo_lion_air (1).jpg", "Sriwijaya_air (1).png", "garuda_indonesia (1).png", "batik_air (1).png","super_air_jet (1).png", 
+        "air_asia_air (1).png", "singapore_airline (1).png", "qantas_air (1).png", "citilink_air (1).png" 
     };
    
     public static void main(String[] args) {
-        new PlanePageWindow(new Database(), index); 
+        new PlanePageWindow(new Database(), 0); 
         // System.out.println("main");
     }
     public PlanePageWindow(Database data, int idx){
-
-    // this for note
-    /*
-     type of layout
-     flowlayout
-     gridlayout
-     borderlayout
-     */
+ 
+        ImageIcon image_icon[] = new ImageIcon[image.length]; 
+        for(int i = 0; i<image.length; i++){
+            image_icon[i] = new ImageIcon("bin/"+image[i]);
+        }
 
         index = idx;
         panel_container.setLayout(new GridLayout(9,5));
@@ -77,7 +71,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             // JButton button2 = new JButton();
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel panel_logo_airplane = new JLabel(image[i]);
+            JLabel panel_logo_airplane = new JLabel(image_icon[i]);
             JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 5));
             JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel label_destination = new JLabel();
@@ -149,15 +143,12 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
             if(btn.getText() == "Home"){
-                dispose(); 
                 new HomePageWindow(new Database(), index);
             }
             else if(btn.getText() == "Balance"){
-                dispose();
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.getText() == "History"){
-                dispose();
                 new HistoryWindow(index);
             }
             else{
@@ -213,8 +204,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                     }
                                 }
                                 // this is for exit the program
-                                frame.setVisible(false);
-                                
+                                frame.setVisible(false);                               
                             } 
                         });
                         button_no.addActionListener(new ActionListener() {
@@ -249,10 +239,10 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                         frame.setResizable(false);
                         frame.setVisible(true);
                         // this is for accessing the button
-                        return; 
                     }   
                 }
             }
+            dispose();
         }  
     }
 }
