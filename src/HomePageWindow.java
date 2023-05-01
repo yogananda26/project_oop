@@ -30,6 +30,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
+    private JLabel label2 = new JLabel();
     private JLabel southLabel;
     private JPanel panel = new JPanel();
     private JPanel panel1 = new JPanel();
@@ -73,6 +74,10 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     };
 
     HomePageWindow(Database data, int idx){ 
+
+        Color backgroundColor = new Color(223, 246, 255);
+        Color headerColor = new Color(6, 40, 61);
+
         datum = data;
         index = idx;
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -114,21 +119,39 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         }
         panel2.setBackground(bgColor);
 
-        Color headerColor = new Color(77, 82, 89);
-        panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panel3.setLayout(new BorderLayout());
         panel3.setPreferredSize(new Dimension(100, 130));
-        label.setText("Enjoy for your holiday!!!");
-        label.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
-        panel3.add(label);
+        label2.setText("Welcome, " + datum.user.get(index).getUsername() + " ");
+        label.setText("Enjoy your holiday!!!");
+        label2.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+        label.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label2.setForeground(Color.WHITE);
+        label.setForeground(Color.WHITE);
+        panel3.add(label2, BorderLayout.NORTH);
+        panel3.add(label, BorderLayout.CENTER);
         panel3.setBackground(headerColor);
+
+        // panel3.setLayout(new GridLayout(2, 1));
+        // panel3.setPreferredSize(new Dimension(100, 130));
+        // label2.setText("Welcome, " + datum.user.get(index).getUsername() + " ");
+        // label.setText("Enjoy your holiday!!!");
+        // label2.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        // label.setFont(new Font("Times New Roman", Font.PLAIN, 60));
+        // label2.setForeground(Color.WHITE);
+        // label.setForeground(Color.WHITE);
+        // panel3.add(label2);
+        // panel3.add(label);
+        // panel3.setAlignmentX(CENTER_ALIGNMENT);
+        // panel3.setBackground(headerColor);
 
         ImageIcon downbanner = new ImageIcon(getClass().getResource("southbanner.png"));
         southLabel = new JLabel(downbanner);
         panel4.setPreferredSize(new Dimension(100, 145));
         panel4.add(southLabel);
-        panel4.setBackground(bgColor);
+        panel4.setBackground(backgroundColor);
 
         button.setSize(1920, 1080);
+        panel2.setBackground(backgroundColor);
         this.add(panel2, BorderLayout.CENTER);
         // this.add(panel3,BorderLayout.EAST);
         this.add(panel3, BorderLayout.NORTH);

@@ -20,13 +20,14 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
     JRadioButton maleBtn, femaleBtn;
     JButton loginBtn, submitBtn;
 
-    Font labelFont = new Font("Open Sans", Font.PLAIN, 20);
-    Font fieldFont = new Font("Open Sans", Font.PLAIN, 18);
+    Font labelFont = new Font("Times New Roman", Font.PLAIN, 20);
+    Font fieldFont = new Font("Times New Roman", Font.PLAIN, 18);
 
     
     public RegisterWindow() {
         // container
-        Color bgColor = new Color(105, 105, 105);
+        Color bgColor = new Color(6, 40, 61);
+        Color layerColor = new Color(223, 246, 255);
         register = new JFrame("Travelly!!");
         register.setSize(600, 630);
         register.getContentPane().setBackground(bgColor);
@@ -43,13 +44,14 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
 
         titleLabel = new JLabel();
         titleLabel.setText("REGISTER YOURSELF!");
-        titleLabel.setFont(new Font("Open Sans", Font.BOLD, 30));
+        titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
         titleLabel.setBounds(140, 10, 1000, 50);
+        titleLabel.setForeground(Color.WHITE);
 
         compLayer = new JLayeredPane();
         compLayer.setBounds(18, 95, 550, 470);
         compLayer.setOpaque(true);
-        compLayer.setBackground(Color.white);
+        compLayer.setBackground(layerColor);
 
         fullNameLabel = new JLabel("Full Name : ");
         fullNameLabel.setFont(labelFont);
@@ -120,7 +122,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         genderLabel.setFont(labelFont);
         genderLabel.setBounds(18, 278, 1000, 50);
 
-        ImageIcon submitIcon = new ImageIcon(getClass().getResource("regiester_button.jpg"));
+        ImageIcon submitIcon = new ImageIcon(getClass().getResource("register_button.png"));
         submitBtn = new JButton(submitIcon);
         submitBtn.setBounds(200, 380, 180, 49);
         submitBtn.setContentAreaFilled(false);
