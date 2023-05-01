@@ -45,8 +45,8 @@ public class TrainPageWindow extends JFrame implements ActionListener {
             if(btn.getText() == "Home"){
                 new HomePageWindow(new Database(), index); 
             }
-            else if(){
-                
+            else if(btn.getText() == "Balance"){
+                new TopUpWindow(new Database(), index);
             }
         }
     }

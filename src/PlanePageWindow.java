@@ -242,7 +242,6 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                     }   
                 }
             }
-            dispose();
         }  
     }
 }
