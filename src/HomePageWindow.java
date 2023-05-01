@@ -1,18 +1,26 @@
+import com.toedter.calendar.JCalendar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class HomePageWindow extends JFrame implements ActionListener, MouseListener{
@@ -22,11 +30,32 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     private JFrame frame = new JFrame();
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
+    private JLabel southLabel;
     private JPanel panel = new JPanel();
     private JPanel panel1 = new JPanel();
     private JPanel panel2 = new JPanel(); 
     private JPanel panel3 = new JPanel(); 
+    private JPanel panel4 = new JPanel();
 
+    private JFrame dateFrame = new JFrame("Choose your day");
+    private JButton nextBtn = new JButton("Next");
+    private JCalendar calendar = new JCalendar();
+
+<<<<<<< Updated upstream
+=======
+    private JButton button_plane; 
+    private JButton button_train;
+    private JButton top_up;
+
+    private JMenuBar menuBar = new JMenuBar();
+    private JMenu menu = new JMenu("Options");
+    private JMenuItem viewBalanceMenuItem = new JMenuItem("View Balance");
+    private JMenuItem logoutMenuItem = new JMenuItem("Log Out");
+    private JMenuItem exitMenuItem = new JMenuItem("Exit");
+
+    Color bgColor = new Color(105, 105, 105);
+
+>>>>>>> Stashed changes
     JButton[] buttonmenu = new JButton[3];
     private Database datum;
     private int index; 
@@ -56,6 +85,17 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         panel2.setLayout(new FlowLayout(1, 10, 10));
         panel3.setLayout(new GridLayout(1,3));
 
+        menuBar.add(menu);
+        menu.add(viewBalanceMenuItem);
+        menu.addSeparator();
+        menu.add(logoutMenuItem);
+        menu.addSeparator();
+        menu.add(exitMenuItem);
+        viewBalanceMenuItem.addActionListener(this);
+        logoutMenuItem.addActionListener(this);
+        exitMenuItem.addActionListener(this);
+        setJMenuBar(menuBar);
+
         // this is for the button 
         for(String i : name_label){
             JButton button_new = new JButton(); 
@@ -72,27 +112,58 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
             buttonmenu[i].setFocusable(false);
             buttonmenu[i].addActionListener(this);
             buttonmenu[i].addMouseListener(this);
+            buttonmenu[i].addMouseListener(this);
             panel2.add(buttonmenu[i]);
         }
+        panel2.setBackground(bgColor);
 
         panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panel3.setPreferredSize(new Dimension(100, 70));
-        label.setText("Book for your holiday!!!");
+        panel3.setPreferredSize(new Dimension(100, 130));
+        label.setText("Enjoy for your holiday!!!");
         label.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
         panel3.add(label);
-        panel3.setBackground(new Color(105, 105, 105));
+        panel3.setBackground(headerColor);
 
+        ImageIcon downbanner = new ImageIcon(getClass().getResource("southbanner.png"));
+        southLabel = new JLabel(downbanner);
+        panel4.setPreferredSize(new Dimension(100, 145));
+        panel4.add(southLabel);
+        panel4.setBackground(bgColor);
 
         button.setSize(1920, 1080);
         this.add(panel2, BorderLayout.CENTER);
         // this.add(panel3,BorderLayout.EAST);
         this.add(panel3, BorderLayout.NORTH);
         this.add(panel, BorderLayout.WEST); 
+        this.add(panel4, BorderLayout.SOUTH);
         this.setVisible(true);
-    
+
+        nextBtn.setFocusable(false);
+        nextBtn.addActionListener(this);
+        dateFrame.setSize(400, 400);
+        dateFrame.setLayout(new BorderLayout());
+        dateFrame.add(calendar, BorderLayout.CENTER);
+        dateFrame.add(nextBtn, BorderLayout.SOUTH);
+        dateFrame.setLocationRelativeTo(null);
+        dateFrame.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        dateFrame.setResizable(false);    
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==nextBtn){
+            String date = String.format("%tF", calendar.getDate());
+            System.out.println(date);
+            dateFrame.dispose();   
+        }
+
+        if (e.getSource()==viewBalanceMenuItem){
+            new TopUpWindow(datum, index);
+        } else if (e.getSource()==logoutMenuItem){
+            new LoginWindow();
+        } else if (e.getSource()==exitMenuItem){
+            dispose();
+        }
     
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
@@ -103,8 +174,12 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.equals(buttonmenu[2])){ 
+<<<<<<< Updated upstream
                 new PlanePageWindow(new Database(), index);
                 //the coding
+=======
+                dateFrame.setVisible(true);
+>>>>>>> Stashed changes
             }
             else{ 
                 String get_text = btn.getText(); 
@@ -118,7 +193,9 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+        if (e.getSource()==buttonmenu[2]){
+            
+        }
     }
     @Override
     public void mousePressed(MouseEvent e) {
