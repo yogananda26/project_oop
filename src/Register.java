@@ -5,10 +5,9 @@ public class Register {
     int userSize = Database.user.size();
     private int idx = 0;
 
-   public static void main(String[] args) {
-    new RegisterWindow();
-    // System.out.println("main");
-   }
+    public static void main(String[] args) {
+        new RegisterWindow();
+    }
 
     boolean checkValidEmail(String email){
         if (email.contains("@gmail.com")){
