@@ -41,8 +41,6 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     private JButton nextBtn = new JButton("Next");
     private JCalendar calendar = new JCalendar();
 
-<<<<<<< Updated upstream
-=======
     private JButton button_plane; 
     private JButton button_train;
     private JButton top_up;
@@ -55,7 +53,6 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
 
     Color bgColor = new Color(105, 105, 105);
 
->>>>>>> Stashed changes
     JButton[] buttonmenu = new JButton[3];
     private Database datum;
     private int index; 
@@ -117,6 +114,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         }
         panel2.setBackground(bgColor);
 
+        Color headerColor = new Color(77, 82, 89);
         panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel3.setPreferredSize(new Dimension(100, 130));
         label.setText("Enjoy for your holiday!!!");
@@ -174,12 +172,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.equals(buttonmenu[2])){ 
-<<<<<<< Updated upstream
-                new PlanePageWindow(new Database(), index);
-                //the coding
-=======
                 dateFrame.setVisible(true);
->>>>>>> Stashed changes
             }
             else{ 
                 String get_text = btn.getText(); 
