@@ -152,6 +152,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         if(e.getSource()==nextBtn){
             String date = String.format("%tF", calendar.getDate());
             System.out.println(date);
+            new PlanePageWindow(new Database(), index); 
             dateFrame.dispose();   
         }
 
@@ -166,10 +167,12 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         // TODO Auto-generated method stub
         if(e.getSource() instanceof JButton btn){
             if(btn.equals(buttonmenu[0])){ 
-                new TrainPageWindow(index); 
+                new TrainPageWindow(index);
+                dispose(); 
             }
             else if(btn.equals(buttonmenu[1])){
                 new TopUpWindow(new Database(), index);
+                dispose();
             }
             else if(btn.equals(buttonmenu[2])){ 
                 dateFrame.setVisible(true);
@@ -181,7 +184,6 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
                 else if(get_text.equals(name_label[2]))new TopUpWindow(datum, index);
                 else if(get_text.equals(name_label[3]))new LoginWindow();
             } 
-            dispose();
         }
     }
     @Override
