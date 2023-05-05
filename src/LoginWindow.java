@@ -64,7 +64,7 @@ public class LoginWindow extends JFrame implements ActionListener, MouseListener
         passwordField.setBounds(130, 74, 400, 25);
         passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("login_button.png"));
+        ImageIcon icon = new ImageIcon("src/assets/login_button.png");
         loginBtn = new JButton(icon);
         loginBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         loginBtn.setBounds(200, 130, 160, 40);

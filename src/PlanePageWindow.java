@@ -36,6 +36,9 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         "Manado", "Maluku"
     }; 
     private String navigation[] = {
+        "homeicon.png", "dateicon.png", "profileicon.png", "balanceicon.png", "historyicon.png"
+    };
+    private String navigate[] = {
         "Home", "Date", "Profile", "Balance", "History"
     };
     private String more_button[] ={
@@ -45,7 +48,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     }; 
     private Double price[] = { 
         2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
-        212000.0, 100000.0, 112100.0
+        212000.0, 100000.0, 750000.0
     }; 
 
     private String image[] = {
@@ -57,11 +60,16 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         new PlanePageWindow(new Database(), 0); 
         // System.out.println("main");
     }
+
     public PlanePageWindow(Database data, int idx){
+
+        Color bgColor = new Color(223, 246, 255);
+        Color headerColor = new Color(6, 40, 61);
+        ImageIcon moreButton = new ImageIcon("src/assets/moreinfobutton.png");
  
         ImageIcon image_icon[] = new ImageIcon[image.length]; 
         for(int i = 0; i<image.length; i++){
-            image_icon[i] = new ImageIcon("bin/"+image[i]);
+            image_icon[i] = new ImageIcon("src/assets/"+image[i]);
         }
 
         index = idx;
@@ -76,57 +84,69 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
-            JLabel label_price = new JLabel(); 
+            JLabel label_price = new JLabel();
+            panel.setBackground(bgColor); 
+            panel_destination.setBackground(bgColor);
+            panel_logo_airplane.setBackground(bgColor);
+            panel_button_more.setBackground(bgColor);
+            panel_plane.setBackground(bgColor);
 
             String text = plane_name[i];
             label.setText(text);
-            label.setFont(new Font(getName(), ABORT, 20));
+            label.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label.setPreferredSize(new Dimension(250, 25));
             panel_plane.setPreferredSize(new Dimension(250, 200));
             panel_plane.add(label);
             panel_plane.add(panel_logo_airplane);
 
-            String dest = destination[i] + "  ---->  " + destination[(destination.length-1 - i)/(i+1)];
+            String dest = destination[i] + "  →  " + destination[(destination.length-1 - i)/(i+1)];
             label_destination.setText(dest);
-            label_destination.setFont(new Font(getName(), ABORT, 20));
+            label_destination.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_destination.setHorizontalAlignment(JLabel.CENTER);
             // label_destination.setPreferredSize(new Dimension(200, 200));
             panel_destination.setPreferredSize(new Dimension(400, 200));
-    
             
             panel_destination.add(label_destination);
             panel.add(panel_plane);
             panel.add(panel_destination);
 
             panel_container.add(panel); 
-            JButton button_more = new JButton(more_button[i]);
-            button_more.setPreferredSize(new Dimension(100,60));
+            JButton button_more = new JButton(moreButton);
+            button_more.setText(more_button[i]);
+            button_more.setFont(new Font("Times New Roman", Font.PLAIN, 1));
+            button_more.setPreferredSize(new Dimension(100,40));
             button_more.addActionListener(this);
             button_more.setFocusable(false);
             button_more.setBackground(Color.white);
 
             label_price.setText("Rp"+price[i].toString());
-            label_price.setFont(new Font(getName(), ABORT, 20));
+            label_price.setFont(new Font("Times New Roman", Font.BOLD, 20));
             panel_button_more.add(label_price);
             panel_button_more.add(button_more); 
             panel_container.add(panel_button_more);
 
         }
         panel2.setLayout(new GridLayout(5, 1));
+        panel2.setPreferredSize(new Dimension(100, 750));
 
-        for(String i : navigation){
+        for (int i = 0; i < 5; i++){
+            ImageIcon navIcon = new ImageIcon("src/assets/" + navigation[i]);
             JButton button1 = new JButton(); 
-            button1.setText(i);
+            button1.setIcon(navIcon);
+            button1.setText(navigate[i]);
+            button1.setFont(new Font("Times New Roman", Font.PLAIN, 1));
             button1.setBackground(Color.WHITE);
             button1.setFocusable(false);
             button1.addActionListener(this);
-            panel2.add(button1); 
+            panel2.add(button1);
         }
 
-        label_head.setText("Travelly App");
-        label_head.setFont(new Font("Helvetica", Font.PLAIN, 50));
+        label_head.setText("Book your airplane ticket!");
+        label_head.setFont(new Font("Times New Roman", Font.BOLD, 50));
+        label_head.setForeground(Color.WHITE);
         panel_head.add(label_head);
         panel_head.setBackground(new Color(79, 188, 224));
+        panel_head.setBackground(headerColor);
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -163,7 +183,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                         JButton button_yes = new JButton("Buy");
                         JButton button_no = new JButton("Cancel");
                         JPanel new_info = new JPanel(new FlowLayout(FlowLayout.CENTER));
-                        JLabel label_head = new JLabel("This Is Your Choose"); 
+                        JLabel label_head = new JLabel("This Is Your Choice"); 
+                        label_head.setFont(new Font("Times New Roman", Font.BOLD, 30));
                         new_info.add(label_head); 
                     
                         button_yes.addActionListener(new ActionListener() {
@@ -217,21 +238,21 @@ public class PlanePageWindow extends JFrame implements ActionListener {
 
                         // this is for the info
                         JTextArea text_ticket = new JTextArea(
-                            "============================\n\n" + 
-                            "Plane       : " + plane_name[i] + "\n" + 
-                            "Price       : Rp" + price[i] + ";\n" +
+                            "═════════════════════════\n\n" + 
+                            "Plane        : " + plane_name[i] + "\n" + 
+                            "Price         : Rp" + price[i] + ",-\n" +
                             "Departure : " + destination[i] + "\n" +
-                            "Arrival     : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
-                            "============================"
+                            "Arrival      : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
+                            "═════════════════════════"
                         );
                         text_ticket.setOpaque(false);
                         text_ticket.setEditable(false);
-                        text_ticket.setFont(new Font("Sherif", Font.BOLD, 20));
+                        text_ticket.setFont(new Font("Times New Roman", Font.BOLD, 20));
                         
                         panel_field.add(text_ticket);
                         panel.add(button_yes);
                         panel.add(button_no); 
-                        frame.setSize(400, 400);
+                        frame.setSize(400, 350);
                         frame.setLocationRelativeTo(null);
                         frame.add(new_info, BorderLayout.NORTH); 
                         frame.add(panel, BorderLayout.SOUTH); 

@@ -28,6 +28,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         // container
         Color bgColor = new Color(6, 40, 61);
         Color layerColor = new Color(223, 246, 255);
+        
         register = new JFrame("Travelly!!");
         register.setSize(600, 630);
         register.getContentPane().setBackground(bgColor);
@@ -35,7 +36,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         register.setLayout(null);
         register.setResizable(false);
         register.setLocationRelativeTo(null);
-
+        
         // component
         titlePanel = new JPanel();
         titlePanel.setBounds(0, 0, 600, 75);
@@ -122,7 +123,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         genderLabel.setFont(labelFont);
         genderLabel.setBounds(18, 278, 1000, 50);
 
-        ImageIcon submitIcon = new ImageIcon(getClass().getResource("register_button.png"));
+        ImageIcon submitIcon = new ImageIcon("src/assets/register_button.png");
         submitBtn = new JButton(submitIcon);
         submitBtn.setBounds(200, 380, 180, 49);
         submitBtn.setContentAreaFilled(false);
