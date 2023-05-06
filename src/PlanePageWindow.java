@@ -47,8 +47,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         "More for SG Airline","More for for Qantas Airlane","More for Citilink"
     }; 
     private Double price[] = { 
-        2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 123000.0,
-        212000.0, 100000.0, 750000.0
+        2000000.0, 3000000.0 , 1000000.0, 1500000.0, 4000000.0, 1230040.0,
+        2120000.0, 1000000.0, 7500000.0
     }; 
 
     private String image[] = {
@@ -78,15 +78,15 @@ public class PlanePageWindow extends JFrame implements ActionListener {
 
             // JButton button2 = new JButton();
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-            JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER, 50 , 5));
+            JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER, 50 , 20));
             JLabel panel_logo_airplane = new JLabel(image_icon[i]);
-            JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 5));
+            JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 10));
             JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.LEADING));
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
             JLabel label_price = new JLabel();
 
-            JPanel panel_date = new JPanel(); 
+            JPanel panel_date = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 25)); 
             JLabel label_date = new JLabel(); 
 
             panel.setBackground(bgColor); 
@@ -108,24 +108,25 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             label_destination.setText(dest);
             label_destination.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_destination.setHorizontalAlignment(JLabel.CENTER);
+            panel_destination.setPreferredSize(new Dimension(420, 80));
             // label_destination.setPreferredSize(new Dimension(200, 200));
 
             label_date.setText(date); 
-            label_date.setFont(new Font(getName(), ABORT, 20));
+            label_date.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_date.setHorizontalAlignment(JLabel.CENTER);
             panel_date.add(label_date); 
+            panel_date.setPreferredSize(new Dimension(350, 80));
+            // panel_date.setBackground(Color.BLACK);
             
-            
-
-            
-            panel_destination.add(label_destination);
-            panel.add(panel_plane);
-            panel.add(panel_date);
-
             
         
+            panel_destination.add(label_destination);
+            panel.add(panel_plane);
+            panel.add(panel_destination);
+
+            // panel.setBackground(Color.red);
+        
             panel_container.add(panel); 
-            panel_container.add(panel_destination);
             JButton button_more = new JButton(moreButton);
             button_more.setText(more_button[i]);
             button_more.setFont(new Font("Times New Roman", Font.PLAIN, 1));
@@ -136,6 +137,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
 
             label_price.setText("Rp"+price[i].toString());
             label_price.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+            panel_button_more.add(panel_date);
             panel_button_more.add(label_price);
             panel_button_more.add(button_more); 
 
@@ -178,14 +181,17 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
-            dispose();
+            
             if(btn.getText() == "Home"){  
+                dispose();
                 new HomePageWindow(new Database(), index);
             }
             else if(btn.getText() == "Balance"){
+                dispose();
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.getText() == "History"){
+                dispose();
                 new HistoryWindow(index);
             }
             else{
@@ -232,7 +238,6 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                                    new PassengerSubmitWindow(0, input, index, j); 
                                                 }
                                             }
-
                                             System.out.println(Database.user.get(index).history);
                                             break;
                                         }
