@@ -4,6 +4,8 @@ public class Register {
 
     int userSize = Database.user.size();
     private int idx = 0;
+
+
     public static void main(String[] args) {
         new RegisterWindow();
     }

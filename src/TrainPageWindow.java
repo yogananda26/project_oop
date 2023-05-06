@@ -58,10 +58,10 @@ public class TrainPageWindow extends JFrame implements ActionListener {
     ImageIcon moreButton = new ImageIcon("src/assets/moreinfobutton.png");
 
     public static void main(String[] args) {
-        new TrainPageWindow(1);
+        new TrainPageWindow(1, "test");
     }
 
-    TrainPageWindow(int idx){
+    TrainPageWindow(int idx, String date){
 
         index = idx;
 
@@ -77,11 +77,14 @@ public class TrainPageWindow extends JFrame implements ActionListener {
             JPanel bgPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JPanel destinationPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel logoPanel = new JLabel(logo);
-            JPanel moreButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 5));
+            JPanel moreButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT,50, 20));
             JPanel trainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel destinationLabel = new JLabel();
             JLabel label = new JLabel();
             JLabel priceLabel = new JLabel();
+
+            JPanel panel_date = new JPanel(); 
+            JLabel label_date = new JLabel(); 
             
             bgPanel.setBackground(bgColor);
             destinationPanel.setBackground(bgColor);
@@ -92,24 +95,34 @@ public class TrainPageWindow extends JFrame implements ActionListener {
             String tempText = trainName[i];
             label.setText(tempText);
             label.setFont(new Font("Times New Roman", Font.BOLD, 20));
-            label.setPreferredSize(new Dimension(250, 25));
-            trainPanel.setPreferredSize(new Dimension(250, 200));
+            label.setPreferredSize(new Dimension(300, 25));
+            trainPanel.setPreferredSize(new Dimension(300, 200));
             trainPanel.add(label);
             trainPanel.add(logoPanel);
 
             String dest = destination[i] + "  →  " + destination[(destination.length-1 - i)/(i+1)];
             destinationLabel.setText(dest);
             destinationLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+            destinationLabel.setVerticalAlignment(JLabel.NORTH);
             destinationLabel.setHorizontalAlignment(JLabel.CENTER);
-            destinationLabel.setPreferredSize(new Dimension(500, 200));
+            destinationLabel.setPreferredSize(new Dimension(400, 150));
 
             destinationPanel.add(destinationLabel);
+            // destinationPanel.setBackground(Color.red);
             bgPanel.add(trainPanel);
             bgPanel.add(destinationPanel);
-            bgPanel.setBackground(Color.BLUE);
+            // bgPanel.setBackground(Color.BLUE);
 
+            label_date.setText(date);
+            label_date.setVerticalAlignment(JLabel.CENTER);
+            label_date.setFont(new Font("Times New Roman", Font.BOLD, 20));
+            panel_date.add(label_date);
+            panel_date.setBackground(bgColor);
+            panel_date.setPreferredSize(new Dimension(400, 50));
+            
             panelContainer.add(bgPanel);
-            panelContainer.setBackground(Color.RED);
+            
+            // panelContainer.setBackground(Color.RED);
             JButton moreBtn = new JButton(moreButton);
             moreBtn.setPreferredSize(new Dimension(100, 40));
             moreBtn.setText(textButton[i]);
@@ -119,8 +132,11 @@ public class TrainPageWindow extends JFrame implements ActionListener {
             
             priceLabel.setText("Rp" + price[i].toString());
             priceLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+            moreButtonPanel.add(panel_date);
             moreButtonPanel.add(priceLabel);
             moreButtonPanel.add(moreBtn);
+            // moreButtonPanel.setBackground(Color.red);
             panelContainer.add(moreButtonPanel);
         }
     

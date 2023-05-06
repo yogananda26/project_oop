@@ -57,11 +57,11 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     };
    
     public static void main(String[] args) {
-        new PlanePageWindow(new Database(), 0); 
+        new PlanePageWindow(new Database(), 0, "test"); 
         // System.out.println("main");
     }
 
-    public PlanePageWindow(Database data, int idx){
+    public PlanePageWindow(Database data, int idx, String date){
 
         Color bgColor = new Color(223, 246, 255);
         Color headerColor = new Color(6, 40, 61);
@@ -77,25 +77,30 @@ public class PlanePageWindow extends JFrame implements ActionListener {
         for(int i = 0; i<plane_name.length; i++){
 
             // JButton button2 = new JButton();
-            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+            JPanel panel_destination = new JPanel(new FlowLayout(FlowLayout.CENTER, 50 , 5));
             JLabel panel_logo_airplane = new JLabel(image_icon[i]);
             JPanel panel_button_more = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 5));
-            JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JPanel panel_plane = new JPanel(new FlowLayout(FlowLayout.LEADING));
             JLabel label_destination = new JLabel();
             JLabel label = new JLabel();
             JLabel label_price = new JLabel();
+
+            JPanel panel_date = new JPanel(); 
+            JLabel label_date = new JLabel(); 
+
             panel.setBackground(bgColor); 
             panel_destination.setBackground(bgColor);
             panel_logo_airplane.setBackground(bgColor);
             panel_button_more.setBackground(bgColor);
             panel_plane.setBackground(bgColor);
+            panel_date.setBackground(bgColor);
 
             String text = plane_name[i];
             label.setText(text);
             label.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label.setPreferredSize(new Dimension(250, 25));
-            panel_plane.setPreferredSize(new Dimension(250, 200));
+            panel_plane.setPreferredSize(new Dimension(300, 100));
             panel_plane.add(label);
             panel_plane.add(panel_logo_airplane);
 
@@ -104,13 +109,23 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             label_destination.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_destination.setHorizontalAlignment(JLabel.CENTER);
             // label_destination.setPreferredSize(new Dimension(200, 200));
-            panel_destination.setPreferredSize(new Dimension(400, 200));
+
+            label_date.setText(date); 
+            label_date.setFont(new Font(getName(), ABORT, 20));
+            label_date.setHorizontalAlignment(JLabel.CENTER);
+            panel_date.add(label_date); 
+            
+            
+
             
             panel_destination.add(label_destination);
             panel.add(panel_plane);
-            panel.add(panel_destination);
+            panel.add(panel_date);
 
+            
+        
             panel_container.add(panel); 
+            panel_container.add(panel_destination);
             JButton button_more = new JButton(moreButton);
             button_more.setText(more_button[i]);
             button_more.setFont(new Font("Times New Roman", Font.PLAIN, 1));
@@ -123,6 +138,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             label_price.setFont(new Font("Times New Roman", Font.BOLD, 20));
             panel_button_more.add(label_price);
             panel_button_more.add(button_more); 
+
             panel_container.add(panel_button_more);
 
         }
@@ -162,7 +178,8 @@ public class PlanePageWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Database data = new Database();
         if(e.getSource() instanceof JButton btn){ 
-            if(btn.getText() == "Home"){
+            dispose();
+            if(btn.getText() == "Home"){  
                 new HomePageWindow(new Database(), index);
             }
             else if(btn.getText() == "Balance"){

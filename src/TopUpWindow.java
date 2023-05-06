@@ -37,7 +37,6 @@ public class TopUpWindow extends JFrame implements ActionListener{
     private String navigation[] = {
         "homeicon.png", "profileicon.png", "historyicon.png","logouticon.png"
     };  
-    
     public static void main(String[] args) {
         new TopUpWindow(new Database(), 0);
     }
@@ -105,26 +104,26 @@ public class TopUpWindow extends JFrame implements ActionListener{
         contentPanel.add(balanceLabel);
 
         // this is panel for label 
-        // JPanel balanceJPanel = new JPanel(new FlowLayout()); 
-        // balanceJPanel.add(balanceLabel); 
-        // contentPanel.add(balanceJPanel,BorderLayout.NORTH);
+        JPanel balanceJPanel = new JPanel(new FlowLayout()); 
+        balanceJPanel.add(balanceLabel); 
+        contentPanel.add(balanceJPanel,BorderLayout.NORTH);
 
-        // balancePanel = new JPanel(new FlowLayout());
-        // balancePanel.setBorder(BorderFactory.createEmptyBorder(150, 150, 150, 150));
-        // textLabel = new JLabel("Amount : ");
-        // textLabel.setFont(contentFont);
-        // balanceField = new JTextField(15);
-        // balanceField.setFont(contentFont);
-        // balanceBtn = new JButton("Add");
-        // balanceBtn.setFont(contentFont);
-        // balanceBtn.setFocusable(false);
-        // balanceBtn.addActionListener(this);
-        // balancePanel.add(textLabel);
-        // balancePanel.add(balanceField);
-        // balancePanel.add(balanceBtn);
-        // contentPanel.add(balancePanel, BorderLayout.CENTER);
+        balancePanel = new JPanel(new FlowLayout());
+        balancePanel.setBorder(BorderFactory.createEmptyBorder(150, 150, 150, 150));
+        textLabel = new JLabel("Amount : ");
+        textLabel.setFont(contentFont);
+        balanceField = new JTextField(15);
+        balanceField.setFont(contentFont);
+        balanceBtn = new JButton("Add");
+        balanceBtn.setFont(contentFont);
+        balanceBtn.setFocusable(false);
+        balanceBtn.addActionListener(this);
+        balancePanel.add(textLabel);
+        balancePanel.add(balanceField);
+        balancePanel.add(balanceBtn);
+        contentPanel.add(balancePanel, BorderLayout.CENTER);
 
-        // help ini taro dipaling bwh
+       
         // ImageIcon bgImage = new ImageIcon(getClass().getResource("topupbalancebg.png"));
         // JLabel bgLabel = new JLabel(bgImage);
         // contentPanel.add(bgLabel, BorderLayout.NORTH);

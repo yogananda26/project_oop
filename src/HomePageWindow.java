@@ -1,4 +1,5 @@
 import com.toedter.calendar.JCalendar;
+import java.lang.Package;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -57,6 +58,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
     JButton[] buttonmenu = new JButton[3];
     private Database datum;
     private int index; 
+    private int mark = -1;
 
     // int idx = new Register().getUseridx();
     // Database temp = new Register().getData();
@@ -186,14 +188,22 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource()==nextBtn){
+        
+        if(e.getSource() == nextBtn){
             String date = String.format("%tF", calendar.getDate());
             System.out.println(date);
-            new PlanePageWindow(new Database(), index); 
+            switch (mark) {
+                case 0:
+                    new TrainPageWindow(index, date);
+                    break;
+                case 1 : 
+                    new PlanePageWindow(datum, index, date);
+                default:
+                    break;
+            }
             dateFrame.dispose();   
         }
-
+        
         if (e.getSource()==viewBalanceMenuItem){
             new TopUpWindow(datum, index);
         } else if (e.getSource()==logoutMenuItem){
@@ -201,18 +211,18 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         } else if (e.getSource()==exitMenuItem){
             dispose();
         }
-    
+        
         if(e.getSource() instanceof JButton btn){
             if(btn.equals(buttonmenu[0])){ 
-                new TrainPageWindow(index);
-                dispose(); 
+                dateFrame.setVisible(true);
+                mark = 0;
             }
             else if(btn.equals(buttonmenu[1])){
-                new TopUpWindow(new Database(), index);
-                dispose();
+                new TopUpWindow(new Database(), index); 
             }
             else if(btn.equals(buttonmenu[2])){ 
                 dateFrame.setVisible(true);
+                mark = 1;
             }
             else{ 
                 String get_text = btn.getText(); 
