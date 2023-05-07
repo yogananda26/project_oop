@@ -148,11 +148,14 @@ public class PassengerSubmitWindow extends JFrame implements ActionListener{
             }
             if (maleBtn.isSelected()) {
                 gender = "Male";
+                check *= 1;
             } else if (femaleBtn.isSelected()) {
                 gender = "Female";
+                check *= 1;
             }else {
                 gender = "";
                 JOptionPane.showMessageDialog(null, "Please select yout gender!", "Gender", JOptionPane.ERROR_MESSAGE);
+                check *= 0;
             }
 
             if (check == 1){
