@@ -46,7 +46,7 @@ public class RegisterWindow extends JFrame implements ActionListener, MouseListe
         titleLabel = new JLabel();
         titleLabel.setText("REGISTER YOURSELF!");
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        titleLabel.setBounds(140, 10, 1000, 50);
+        titleLabel.setBounds(130, 10, 1000, 50);
         titleLabel.setForeground(Color.WHITE);
 
         compLayer = new JLayeredPane();
