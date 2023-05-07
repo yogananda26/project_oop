@@ -29,9 +29,7 @@ public class History {
     ArrayList<Passanger> get_array_passanger(){
         return user_booking;
     }
-    String get_plane_name(){
-        return transportation_name;
-    }
+    
     
     int insert_history_booking(int index_user, int index_history, Passanger passager){
         if(Database.user.get(index_user).history.get(index_history).user_booking.add(passager)){
