@@ -27,9 +27,6 @@ import javax.swing.JTextArea;
 
 public class HomePageWindow extends JFrame implements ActionListener, MouseListener{
     
-    public static void main(String[] args) {
-        new HomePageWindow(new Database(),0); 
-    }
     private JFrame profileFrame = new JFrame("Profile Detail");
     private JButton button = new JButton(); 
     private JLabel label = new JLabel();
@@ -78,6 +75,10 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         "Profile", "Balance", "History", "Log Out"
     };
 
+    public static void main(String[] args) {
+        new HomePageWindow(new Database(),0); 
+    }
+
     HomePageWindow(Database data, int idx){ 
 
         Color backgroundColor = new Color(223, 246, 255);
@@ -123,10 +124,13 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
             panel2.add(buttonmenu[i]);
         }
 
+        ImageIcon northBanner = new ImageIcon("src/assets/northhomebanner.png");
+
         panel3.setLayout(new BorderLayout());
         panel3.setPreferredSize(new Dimension(100, 130));
         // label2.setText("Welcome, " + datum.user.get(index).getUsername() + " ");
-        label.setText("Enjoy your holiday!!!");
+        // label.setText("Enjoy your holiday!!!");
+        label = new JLabel(northBanner);
         label2.setFont(new Font("Times New Roman", Font.PLAIN, 10));
         label.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         label2.setForeground(Color.WHITE);

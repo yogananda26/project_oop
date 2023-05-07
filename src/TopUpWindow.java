@@ -10,24 +10,33 @@ import javax.swing.JPanel;
 
 public class TopUpWindow extends JFrame implements ActionListener{
     
-    Font contentFont = new Font("Comic Sans MS", Font.PLAIN, 30);
-    JFrame frame;
-    JPanel titlePanel;
-    JLabel titleLabel;
-    JPanel headerPanel;
-    JLabel headerLabel;
-    JPanel titPanel;
-    JPanel contentPanel;
-    JPanel panel1 = new JPanel(new GridLayout(6, 1));
-    JPanel panel2 = new JPanel(new GridLayout(6,1)); 
+    private Font contentFont = new Font("Comic Sans MS", Font.PLAIN, 30);
+    private JFrame frame;
+    private JFrame profileFrame = new JFrame("Profile Details");
+    private JPanel titlePanel;
+    private JLabel titleLabel;
+    private JPanel headerPanel;
+    private JLabel headerLabel;
 
-    JPanel balancePanel;
-    JTextField balanceField;
-    JLabel balanceLabel;
-    JLabel textLabel;
-    JButton balanceBtn;
-    JPanel buttonPanel;
-    Database datum; 
+    private JButton navButton;
+
+    private JLabel southLabel;
+    private JPanel panelTextArea = new JPanel(new BorderLayout());
+    private JButton backButton = new JButton("Back"); 
+    private JButton changePINButton = new JButton("Change PIN");
+
+    private JPanel titPanel;
+    private JPanel contentPanel;
+    private JPanel panel1 = new JPanel(new GridLayout(6, 1));
+    private JPanel panel2 = new JPanel(new GridLayout(4,1)); 
+
+    private JPanel balancePanel;
+    private JTextField balanceField;
+    private JLabel balanceLabel;
+    private JLabel textLabel;
+    private JButton balanceBtn;
+    private JPanel buttonPanel;
+    private Database datum; 
     int index;
 
     private String buttonLabel[] = {
@@ -36,7 +45,8 @@ public class TopUpWindow extends JFrame implements ActionListener{
     
     private String navigation[] = {
         "homeicon.png", "profileicon.png", "historyicon.png","logouticon.png"
-    };  
+    }; 
+
     public static void main(String[] args) {
         new TopUpWindow(new Database(), 0);
     }
@@ -44,7 +54,10 @@ public class TopUpWindow extends JFrame implements ActionListener{
     public TopUpWindow(Database data, int idx) {
         datum = data;
         index = idx;
+
         Color bgColor = new Color(223, 246, 255);
+        Color headerColor = new Color(6, 40, 61);
+
         frame = new JFrame("Travelly");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.getContentPane().setBackground(Color.WHITE);
@@ -52,46 +65,39 @@ public class TopUpWindow extends JFrame implements ActionListener{
         frame.setLayout(new BorderLayout());
         frame.getContentPane().setBackground(bgColor);
 
-        JLabel emptyLabel = new JLabel(" ");
-        // panel1.add(emptyLabel);
-        // panel1.add(emptyLabel);
-        // panel1.add(emptyLabel);
-        // panel2.add(emptyLabel);
-        // panel2.add(emptyLabel);
-        // panel2.add(emptyLabel);
-
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 4; i++){
             ImageIcon navIcon = new ImageIcon("src/assets/" + navigation[i]);
-            JButton navButton = new JButton(navIcon);
+            navButton = new JButton(navIcon);
             navButton.setText(buttonLabel[i]);
             navButton.setFont(new Font("Times New Roman", Font.PLAIN, 1));
             navButton.setFocusable(false);
             navButton.addActionListener(this);
-            navButton.setPreferredSize(new Dimension(100, 1));
+            navButton.setPreferredSize(new Dimension(100, 75));
             panel2.add(navButton);
         }
 
-        for (int i = 2; i < 4; i++){
-            ImageIcon navIcon = new ImageIcon("src/assets/" + navigation[i]);
-            JButton navButton = new JButton(navIcon);
-            navButton.setText(buttonLabel[i]);
-            navButton.setFont(new Font("Times New Roman", Font.PLAIN, 1));
-            navButton.setFocusable(false);
-            navButton.addActionListener(this);
-            navButton.setPreferredSize(new Dimension(100, 1));
-            panel1.add(navButton);
-        }
+        // for (int i = 2; i < 4; i++){
+        //     ImageIcon navIcon = new ImageIcon("src/assets/" + navigation[i]);
+        //     JButton navButton = new JButton(navIcon);
+        //     navButton.setText(buttonLabel[i]);
+        //     navButton.setFont(new Font("Times New Roman", Font.PLAIN, 1));
+        //     navButton.setFocusable(false);
+        //     navButton.addActionListener(this);
+        //     navButton.setPreferredSize(new Dimension(100, 1));
+        //     panel1.add(navButton);
+        // }
 
-        ImageIcon titleImg = new ImageIcon();
         titlePanel = new JPanel(new FlowLayout());
         titleLabel = new JLabel("ADD BALANCE");
+        titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
+        titlePanel.setBackground(headerColor);
         titlePanel.add(titleLabel);
 
         contentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         balanceLabel = new JLabel();
         // balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(index).getBalance());
-        balanceLabel.setText("DISINI BALANCENYA");
+        balanceLabel.setText("Here's your balance : 0,-");
         balanceLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         textLabel = new JLabel("Amount : ");
         textLabel.setFont(contentFont);
@@ -123,6 +129,8 @@ public class TopUpWindow extends JFrame implements ActionListener{
         balancePanel.add(balanceBtn);
         contentPanel.add(balancePanel, BorderLayout.CENTER);
 
+        ImageIcon downbanner = new ImageIcon("src/assets/southbanner.png");
+        southLabel = new JLabel(downbanner);
        
         // ImageIcon bgImage = new ImageIcon(getClass().getResource("topupbalancebg.png"));
         // JLabel bgLabel = new JLabel(bgImage);
@@ -130,12 +138,37 @@ public class TopUpWindow extends JFrame implements ActionListener{
         // headerPanel.add(contentPanel, BorderLayout.CENTER);
 
         // frame.add(headerPanel, BorderLayout.CENTER);
-        frame.add(panel1, BorderLayout.EAST);
+        // frame.add(panel1, BorderLayout.EAST);
         frame.add(panel2, BorderLayout.WEST); 
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(contentPanel, BorderLayout.CENTER);
+        frame.add(southLabel, BorderLayout.SOUTH);
         frame.setVisible(true);
 
+        profileFrame.setSize(500, 500);
+        profileFrame.setLayout(new BorderLayout());
+        panel1.setLayout(new GridLayout(1, 2));
+        JTextArea profileArea = new JTextArea(
+            "Here's your Profile Details\n" + 
+            "Your Name              : " + datum.user.get(index).getFullName() + "\n" +
+            "Your Email             : " + datum.user.get(index).getEmail() + "\n" +
+            "Your Phone Number      : " + datum.user.get(index).getPhone() + "\n" +
+            "Your Gender            : " + datum.user.get(index).getGender() + "\n" +
+            "Your Current Balance   : " + datum.user.get(index).getBalance() + "\n"
+        );
+        panelTextArea.add(profileArea, BorderLayout.CENTER);
+        panelTextArea.setForeground(Color.BLUE);
+        profileArea.setEditable(false);
+        profileArea.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        backButton.addActionListener(this);
+        changePINButton.addActionListener(this);
+        panel1.add(backButton);
+        panel1.add(changePINButton);
+        profileFrame.add(panelTextArea, BorderLayout.CENTER);
+        profileFrame.add(panel1, BorderLayout.SOUTH);
+        profileFrame.setLocationRelativeTo(null);
+        profileFrame.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        profileFrame.setResizable(false);
     }
 
     @Override
@@ -156,11 +189,15 @@ public class TopUpWindow extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Please input correct amount", "Error Input", JOptionPane.ERROR_MESSAGE);
                 }
             }else{ 
-                if(btn.getText() == navigation[0]){
+                if(btn.getText() == buttonLabel[0]){
                     new HomePageWindow(datum, index);
-                }
-                else if(btn.getText() == navigation[3]){
-                    new TopUpWindow(datum, index); 
+                } else if (btn.getText() == buttonLabel[1]){
+                    profileFrame.setVisible(true);
+                } else if (btn.getText() == buttonLabel[2]){
+                    frame.dispose();
+                    new HistoryWindow(index);
+                } else if(btn.getText() == buttonLabel[3]){
+                    new LoginWindow();
                 }
             }
             dispose(); 

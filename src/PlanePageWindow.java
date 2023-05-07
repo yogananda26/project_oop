@@ -108,10 +108,11 @@ public class PlanePageWindow extends JFrame implements ActionListener {
             label_destination.setText(dest);
             label_destination.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_destination.setHorizontalAlignment(JLabel.CENTER);
-            panel_destination.setPreferredSize(new Dimension(420, 80));
+            panel_destination.setPreferredSize(new Dimension(350, 80));
             // label_destination.setPreferredSize(new Dimension(200, 200));
 
             label_date.setText(date); 
+            label_date.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_date.setFont(new Font("Times New Roman", Font.BOLD, 20));
             label_date.setHorizontalAlignment(JLabel.CENTER);
             panel_date.add(label_date); 
