@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +10,7 @@ import java.util.jar.Attributes.Name;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
@@ -28,27 +32,32 @@ public class HistoryWindow extends JFrame implements ActionListener {
 
     JFrame main_frame = new JFrame("History Frame");
     JPanel panel_head = new JPanel(new BorderLayout()); 
-    // JPanel panel_passenger = new JPanel();
+    JLabel bannerLabel;
     ArrayList <JButton> passButtons = new ArrayList<>();
-    ;
     JTable table_history;
 
     private String navigation[] = {
-        "Home", "Date", "Profile", "Balance"
+        "homeicon.png",  "profileicon.png", "balanceicon.png"
     };
+    private String navigate[] = {
+        "Home", "Profile", "Balance"
+    };
+
+    JFrame profileFrame = new JFrame();
+
     int index; 
     JPanel panel_navigation = new JPanel(new GridLayout(5, 1));
 
-    // testing this
-    //second_testing
-
     public HistoryWindow(int idx){
-        //this is for frontend thing
+
         index = idx; 
+
+        Color bgColor = new Color(223, 246, 255);
+        ImageIcon southbanner = new ImageIcon("src/assets/southbanner.png");
+
         try {
             JLabel label_head = new JLabel("THIS IS YOUR HISTORY " + Database.user.get(index).getFullName()); 
             panel_head.add(label_head, BorderLayout.NORTH);
-
 
             //column names
             String[] column_name={"AIRLINE", "PRICE", "DEPARTURE ⇾ ARRIVAL", "DATE", "PASSENGER"};
@@ -62,8 +71,6 @@ public class HistoryWindow extends JFrame implements ActionListener {
                 data[i][2] = temp.get(i).get_departure() + " ⇾ " + temp.get(i).get_arrival();
                 data[i][3] = temp.get(i).get_date();
                 data[i][4] = "Click To See Passengers Detail";
-
-                
             }
             
             //initializing table
@@ -106,98 +113,53 @@ public class HistoryWindow extends JFrame implements ActionListener {
                 }
             });
 
-            // Border blackline = BorderFactory.createLineBorder(Color.black);
-            // Border empBorder = BorderFactory.createEmptyBorder(25, 25, 25, 25);
-
-            // JLabel label_head = new JLabel("THIS IS YOUR HISTORY " + Database.user.get(index).getFullName()); 
-            // panel_head.add(label_head, BorderLayout.NORTH);
-
-            // ArrayList <History> temp = Database.user.get(index).history;
-            // JPanel panel_history = new JPanel(new GridLayout(temp.size()+1, 1));
-            // panel_history.setBorder(empBorder);
-            // JLabel title_history = new JLabel("AIRLINE"); 
-            // title_history.setBorder(blackline);
-            // JLabel title_history1 = new JLabel("PRICE"); 
-            // title_history1.setBorder(blackline);
-            // JLabel title_history2 = new JLabel("ARRIVAL"); 
-            // title_history2.setBorder(blackline);
-            // JLabel title_history3 = new JLabel("DERPATURE"); 
-            // title_history3.setBorder(blackline);
-            // JLabel title_history4 = new JLabel("DATE"); 
-            // title_history4.setBorder(blackline);
-            // JLabel title_history5 = new JLabel("PASSENGER"); 
-            // title_history5.setBorder(blackline);
-
-            // panel_history.add(title_history);
-            // panel_history.add(title_history1);
-            // panel_history.add(title_history2);
-            // panel_history.add(title_history3);
-            // panel_history.add(title_history4);
-            // panel_history.add(title_history5);
-
-            // for(int i = 0; i<temp.size(); i++){
-                
-            //     JLabel label_history = new JLabel(temp.get(i).get_transportation_name());
-            //     label_history.setBorder(blackline);
-            //     JLabel label_history1 = new JLabel(temp.get(i).get_price().toString());
-            //     label_history1.setBorder(blackline);
-            //     JLabel label_history2 = new JLabel(temp.get(i).get_arrival());
-            //     label_history2.setBorder(blackline);
-            //     JLabel label_history3 = new JLabel(temp.get(i).get_departure());
-            //     label_history3.setBorder(blackline);
-            //     JLabel label_history4 = new JLabel(temp.get(i).get_date());
-            //     label_history4.setBorder(blackline);
-
-            //     panel_history.add(label_history);
-            //     panel_history.add(label_history1);
-            //     panel_history.add(label_history2);
-            //     panel_history.add(label_history3);
-            //     panel_history.add(label_history4);
-
-
-            //     ArrayList <Passanger> temp1 = Database.user.get(index).history.get(i).get_array_passanger();
-            //     // JPanel panel_for_passanger = new JPanel(new GridLayout(temp1.size(), 1)); 
-            //     // JPanel panel_for_passanger = new JPanel(new GridLayout(temp1.size(), 1)); 
-            //     JPanel panel_for_passanger = new JPanel(new GridLayout(temp1.size()*3, 1)); 
-            //     // panel_for_passanger.setBorder(blackline);
-            //     // JPanel panel_for_passanger = new JPanel(); 
-            //     // panel_for_passanger.setLayout(new BoxLayout(panel_for_passanger, BoxLayout.Y_AXIS));
-
-            //     for(int j = 0; j<temp1.size(); j++){  
-            //         JLabel label = new JLabel("Name: " + temp1.get(j).name);
-            //         // JLabel label1 = new JLabel(temp1.get(j).age.toString());
-            //         JLabel label1 = new JLabel("Passport: " + temp1.get(j).passportNum);
-            //         // JLabel label3 = new JLabel(temp1.get(j).NIN);
-            //         JLabel label2 = new JLabel("Gender: " + temp1.get(j).gender);
-
-            //         panel_for_passanger.add(label);
-            //         panel_for_passanger.add(label1);
-            //         panel_for_passanger.add(label2);
-            //         // panel_for_passanger.add(label3);
-            //         // panel_for_passanger.add(label4);
-
-            //         panel_history.add(panel_for_passanger);
-            //     }
-            //     this.add(panel_head);
-            //     this.add(panel_history); 
-            // }
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null,"You Dont Have Any Record Before");
         }
-        // this is for navigation 
-        for(String i : navigation){
+
+        for (int i = 0; i < 3; i++){
+            ImageIcon navIcon = new ImageIcon("src/assets/" + navigation[i]);
             JButton button_new = new JButton(); 
-            button_new.setText(i);
+            button_new.setIcon(navIcon);
+            button_new.setText(navigate[i]);
+            button_new.setFont(new Font("Times New Roman", Font.PLAIN, 1));
             button_new.setBackground(Color.WHITE);
+            button_new.setPreferredSize(new Dimension(100, 150));
             button_new.setFocusable(false);
             button_new.addActionListener(this);
             panel_navigation.add(button_new);
         }
+
+        bannerLabel = new JLabel(southbanner);
+
+        this.getContentPane().setBackground(bgColor);
         this.add(panel_navigation, BorderLayout.WEST);
+        this.add(bannerLabel, BorderLayout.SOUTH);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.setVisible(true);
 
+        JPanel panel1 = new JPanel(new GridLayout(1, 2));
+        JPanel panelTextArea = new JPanel(new BorderLayout());
+
+        profileFrame.setSize(500, 500);
+        profileFrame.setLayout(new BorderLayout());
+        JTextArea profileArea = new JTextArea(
+            "Here's your Profile Details\n" + 
+            "Your Name              : " + new Database().user.get(index).getFullName() + "\n" +
+            "Your Email             : " + new Database().user.get(index).getEmail() + "\n" +
+            "Your Phone Number      : " + new Database().user.get(index).getPhone() + "\n" +
+            "Your Gender            : " + new Database().user.get(index).getGender() + "\n" +
+            "Your Current Balance   : " + new Database().user.get(index).getBalance() + "\n"
+        );
+        panelTextArea.add(profileArea, BorderLayout.CENTER);
+        panelTextArea.setForeground(Color.BLUE);
+        profileArea.setEditable(false);
+        profileArea.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        profileFrame.add(panelTextArea, BorderLayout.CENTER);
+        profileFrame.setLocationRelativeTo(null);
+        profileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        profileFrame.setResizable(false);
     }
 
     @Override
@@ -205,14 +167,13 @@ public class HistoryWindow extends JFrame implements ActionListener {
 
         if(e.getSource() instanceof JButton btn){
             dispose();
-            if(btn.getText() == navigation[0]){
+            if(btn.getText() == navigate[0]){
                 new HomePageWindow(new Database(), index); 
             }
-            else if(btn.getText() == navigation[1]){
+            else if(btn.getText() == navigate[1]){
+                profileFrame.setVisible(true);
             }
-            else if(btn.getText() == navigation[2]){
-            }
-            else if(btn.getText() == navigation[3]){
+            else if(btn.getText() == navigate[2]){
                 new TopUpWindow(new Database(), index);
             }
         }
