@@ -87,18 +87,17 @@ public class TopUpWindow extends JFrame implements ActionListener{
         //     panel1.add(navButton);
         // }
 
+        ImageIcon southBanner = new ImageIcon("src/assets/addbalancebanner.png");
         titlePanel = new JPanel(new FlowLayout());
-        titleLabel = new JLabel("ADD BALANCE");
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
+        titleLabel = new JLabel(southBanner);
         titlePanel.setBackground(headerColor);
         titlePanel.add(titleLabel);
 
         contentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         balanceLabel = new JLabel();
-        // balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(index).getBalance());
-        balanceLabel.setText("Here's your balance : 0,-");
-        balanceLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        balanceLabel = new JLabel("Here's your current balance : Rp." + Database.user.get(index).getBalance());
+        // balanceLabel.setText("Here's your balance : 0,-");
+        balanceLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
         textLabel = new JLabel("Amount : ");
         textLabel.setFont(contentFont);
         balanceField = new JTextField(15);
@@ -108,14 +107,16 @@ public class TopUpWindow extends JFrame implements ActionListener{
         balanceBtn.setFocusable(false);
         balanceBtn.addActionListener(this);
         contentPanel.add(balanceLabel);
+        contentPanel.setForeground(bgColor);
 
-        // this is panel for label 
         JPanel balanceJPanel = new JPanel(new FlowLayout()); 
         balanceJPanel.add(balanceLabel); 
         contentPanel.add(balanceJPanel,BorderLayout.NORTH);
+        balanceJPanel.setBackground(bgColor);
 
         balancePanel = new JPanel(new FlowLayout());
         balancePanel.setBorder(BorderFactory.createEmptyBorder(150, 150, 150, 150));
+        balancePanel.setBackground(bgColor);
         textLabel = new JLabel("Amount : ");
         textLabel.setFont(contentFont);
         balanceField = new JTextField(15);
@@ -128,6 +129,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         balancePanel.add(balanceField);
         balancePanel.add(balanceBtn);
         contentPanel.add(balancePanel, BorderLayout.CENTER);
+        contentPanel.setBackground(bgColor);
 
         ImageIcon downbanner = new ImageIcon("src/assets/southbanner.png");
         southLabel = new JLabel(downbanner);
@@ -191,13 +193,18 @@ public class TopUpWindow extends JFrame implements ActionListener{
             }else{ 
                 if(btn.getText() == buttonLabel[0]){
                     new HomePageWindow(datum, index);
+                    frame.dispose();
+                    dispose();
                 } else if (btn.getText() == buttonLabel[1]){
                     profileFrame.setVisible(true);
                 } else if (btn.getText() == buttonLabel[2]){
                     frame.dispose();
                     new HistoryWindow(index);
+                    dispose();
                 } else if(btn.getText() == buttonLabel[3]){
                     new LoginWindow();
+                    frame.dispose();
+                    dispose();
                 }
             }
             dispose(); 

@@ -235,7 +235,7 @@ public class PlanePageWindow extends JFrame implements ActionListener {
                                             Database.user.get(index).setBalance(remaining_balance - price[inner]);
 
                                             for(int j = 0; j<Database.user.get(index).history.size(); j++){
-                                                if(Database.user.get(index).history.get(j).get_plane_name().equals(plane_name[inner])){
+                                                if(Database.user.get(index).history.get(j).get_transportation_name().equals(plane_name[inner])){
                                                    new PassengerSubmitWindow(0, input, index, j); 
                                                 }
                                             }

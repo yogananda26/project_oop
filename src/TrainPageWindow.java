@@ -12,7 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class TrainPageWindow extends JFrame implements ActionListener {
 
@@ -164,12 +166,107 @@ public class TrainPageWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof JButton btn){
-            dispose();
             if(btn.getText() == "Home"){
+                dispose();
                 new HomePageWindow(new Database(), index); 
             }
             else if(btn.getText() == "Balance"){
+                dispose(); 
                 new TopUpWindow(new Database(), index);
+            }
+            else if(btn.getText() == "History"){
+                new HistoryWindow(index); 
+            }
+            else{ 
+                for(int i = 0; i<textButton.length; i++){
+                    if(btn.getText().equals(textButton[i])){
+                        final Integer inner = new Integer(i);
+                        JFrame frame = new JFrame();
+                        JPanel panel = new JPanel();
+                        JPanel panel_field = new JPanel(); 
+                        panel.setLayout(new FlowLayout());
+                        frame.setLayout(new BorderLayout());
+                        JButton button_yes = new JButton("Buy");
+                        JButton button_no = new JButton("Cancel");
+                        JPanel new_info = new JPanel(new FlowLayout(FlowLayout.CENTER));
+                        JLabel label_head = new JLabel("This Is Your Choice"); 
+                        label_head.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                        new_info.add(label_head); 
+                    
+                        button_yes.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                // this is for cheking if our balance is enough or not
+                                Integer input = Integer.parseInt(JOptionPane.showInputDialog(null, "Please input how many Ticket that you want to add" )); 
+                                if(Database.user.get(index).getBalance() < input*price[inner]){
+                                    JOptionPane.showMessageDialog(null, "Your balance is not enough, Please top up first, Must have min : " +
+                                    input*price[inner]);
+                                    dispose();
+                                    new TopUpWindow(new Database(), index);
+                                }
+                                else{
+                                    for(int i = 3; i>=0; i--){
+                                        String PIN = JOptionPane.showInputDialog(null,"Input Your pin");
+                                        if(PIN == null){
+                                            return; 
+                                        }
+                                        if(new Register().checkValidPinEnter(PIN, index)){
+                                            JOptionPane.showMessageDialog(null, "successfull buy your ticket");
+                                            new History(trainName[inner], price[inner],destination[(destination.length - 1-inner)/(inner+1)], destination[inner], "1").insert_history(index);
+                                            Double remaining_balance = Database.user.get(index).getBalance();  
+                                            Database.user.get(index).setBalance(remaining_balance - price[inner]);
+
+                                            for(int j = 0; j<Database.user.get(index).history.size(); j++){
+                                                if(Database.user.get(index).history.get(j).get_transportation_name().equals(trainName[inner])){
+                                                   new PassengerSubmitWindow(0, input, index, j); 
+                                                }
+                                            }
+                                            System.out.println(Database.user.get(index).history);
+                                            break;
+                                        }
+                                        else{
+                                            JOptionPane.showMessageDialog(null, "Please input your exact password " + i +" attemps more");
+                                        }   
+                                    }
+                                }
+                                // this is for exit the program
+                                frame.setVisible(false);                               
+                            } 
+                        });
+                        button_no.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                // this is for exit the program
+                                frame.setVisible(false);
+                            }
+                        });
+
+                        // this is for the info
+                        JTextArea text_ticket = new JTextArea(
+                            "═════════════════════════\n\n" + 
+                            "Plane        : " + trainName[i] + "\n" + 
+                            "Price         : Rp" + price[i] + ",-\n" +
+                            "Departure : " + destination[i] + "\n" +
+                            "Arrival      : " + destination[(destination.length - 1-i)/(i+1)] + "\n\n" +
+                            "═════════════════════════"
+                        );
+                        text_ticket.setOpaque(false);
+                        text_ticket.setEditable(false);
+                        text_ticket.setFont(new Font("Times New Roman", Font.BOLD, 20));
+                        
+                        panel_field.add(text_ticket);
+                        panel.add(button_yes);
+                        panel.add(button_no); 
+                        frame.setSize(400, 350);
+                        frame.setLocationRelativeTo(null);
+                        frame.add(new_info, BorderLayout.NORTH); 
+                        frame.add(panel, BorderLayout.SOUTH); 
+                        frame.add(panel_field, BorderLayout.CENTER); 
+                        frame.setResizable(false);
+                        frame.setVisible(true);
+                        // this is for accessing the button
+                    }  
+                }  
             }
         }
     }
