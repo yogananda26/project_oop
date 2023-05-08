@@ -186,7 +186,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         profileFrame.add(panelTextArea, BorderLayout.CENTER);
         profileFrame.add(panel1, BorderLayout.SOUTH);
         profileFrame.setLocationRelativeTo(null);
-        profileFrame.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        profileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         profileFrame.setResizable(false);
     }
 
