@@ -119,7 +119,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
         balancePanel.setBackground(bgColor);
         textLabel = new JLabel("Amount : ");
         textLabel.setFont(contentFont);
-        balanceField = new JTextField(15);
+        balanceField = new JTextField(30);
         balanceField.setFont(contentFont);
         balanceBtn = new JButton("Add");
         balanceBtn.setFont(contentFont);
@@ -206,8 +206,7 @@ public class TopUpWindow extends JFrame implements ActionListener{
                     frame.dispose();
                     dispose();
                 }
-            }
-            dispose(); 
+            } 
         }
     }
 }

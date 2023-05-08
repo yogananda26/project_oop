@@ -161,7 +161,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         dateFrame.add(calendar, BorderLayout.CENTER);
         dateFrame.add(nextBtn, BorderLayout.SOUTH);
         dateFrame.setLocationRelativeTo(null);
-        dateFrame.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        dateFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dateFrame.setResizable(false);    
 
         profileFrame.setSize(500, 500);
@@ -198,9 +198,11 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
             System.out.println(date);
             switch (mark) {
                 case 0:
+                    dispose();
                     new TrainPageWindow(index, date);
                     break;
                 case 1 : 
+                    dispose(); 
                     new PlanePageWindow(datum, index, date);
                 default:
                     break;
@@ -209,8 +211,10 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
         }
         
         if (e.getSource()==viewBalanceMenuItem){
+            dispose();
             new TopUpWindow(datum, index);
         } else if (e.getSource()==logoutMenuItem){
+            dispose();
             new LoginWindow();
         } else if (e.getSource()==exitMenuItem){
             dispose();
@@ -222,6 +226,7 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
                 mark = 0;
             }
             else if(btn.equals(buttonmenu[1])){
+                dispose();
                 new TopUpWindow(new Database(), index); 
             }
             else if(btn.equals(buttonmenu[2])){ 
@@ -233,8 +238,10 @@ public class HomePageWindow extends JFrame implements ActionListener, MouseListe
                 if(get_text.equals("Profile")){
                     profileFrame.setVisible(true);
                 } else if(get_text.equals("Balance")){
+                    dispose();
                     new TopUpWindow(datum, index);
                 } else if(get_text.equals("History")){
+                    dispose();
                     new HistoryWindow(index);
                 } else if(get_text.equals("Log Out")){
                     dispose();

@@ -160,6 +160,7 @@ public class TrainPageWindow extends JFrame implements ActionListener {
         this.add(panel,BorderLayout.WEST);
         this.add(panelHead, BorderLayout.NORTH);
         this.add(panelContainer, BorderLayout.CENTER);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
@@ -175,6 +176,7 @@ public class TrainPageWindow extends JFrame implements ActionListener {
                 new TopUpWindow(new Database(), index);
             }
             else if(btn.getText() == "History"){
+                dispose();
                 new HistoryWindow(index); 
             }
             else{ 
@@ -263,6 +265,7 @@ public class TrainPageWindow extends JFrame implements ActionListener {
                         frame.add(panel, BorderLayout.SOUTH); 
                         frame.add(panel_field, BorderLayout.CENTER); 
                         frame.setResizable(false);
+                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.setVisible(true);
                         // this is for accessing the button
                     }  
